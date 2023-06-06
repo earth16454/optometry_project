@@ -1,0 +1,34 @@
+CREATE TABLE `personal_information` (
+  `pi_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `pi_firstname` varchar(255) NOT NULL,
+  `pi_lastname` varchar(255) NOT NULL,
+  `pi_birthdate` varchar(255) NOT NULL,
+  `pi_gender` varchar(255) NOT NULL,
+  `pi_address` varchar(255) NOT NULL,
+  `pi_tel` varchar(255) NOT NULL,
+  `pi_occupation` varchar(255) NOT NULL,
+  `pi_created_date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `chief_complaint` (
+  `cc_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `cc_text` varchar(255) NOT NULL,
+  `cc_symptoms` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `pohx` (
+  `POHx_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `POHx_checked` varchar(255) NOT NULL,
+  `POHx_reason` varchar(255) NOT NULL,
+  `POHx_inspector` varchar(255) NOT NULL,
+  `POHx_site` varchar(255) NOT NULL,
+  `POHx_mydriatic` varchar(255) NOT NULL,
+  `POHx_results` varchar(255) NOT NULL,
+  `POHx_edited` varchar(255) NOT NULL,
+  `POHx_radio` varchar(255) NOT NULL,
+  `POHx_radio_detail` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `mixed` (
+  `mix_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
