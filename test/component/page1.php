@@ -44,15 +44,15 @@
       <div class="col-12 col-md-6">
         <label for="pi_gender" class="form-label me-2">Gender :</label><br />
         <div class="form-check form-check-inline">
-          <input type="radio" name="pi_gender" id="male" class="form-check-input" />
+          <input type="radio" name="pi_gender" id="male" class="form-check-input" value="Male" />
           <label for="male" class="form-check-label">Male</label>
         </div>
         <div class="form-check form-check-inline">
-          <input type="radio" name="pi_gender" id="female" class="form-check-input" />
+          <input type="radio" name="pi_gender" id="female" class="form-check-input" value="Female" />
           <label for="female" class="form-check-label">Female</label>
         </div>
         <div class="form-check form-check-inline">
-          <input type="radio" name="pi_gender" id="other" class="form-check-input" />
+          <input type="radio" name="pi_gender" id="other" class="form-check-input" value="N/A" />
           <label for="other" class="form-check-label">N/A</label>
         </div>
       </div>
@@ -60,7 +60,7 @@
       <div class="col-12 col-md-6">
         <label for="pi_tel" class="form-label">Tel :</label>
         <div class="input-group mb-3">
-          <span class="input-group-text" id="basic-addon1"><i class="bx bxs-phone"></i></span>
+          <span class="input-group-text" id="pi_tel"><i class="bx bxs-phone"></i></span>
           <input type="text" class="form-control" name="pi_tel" id="pi_tel" placeholder="0999999999" />
         </div>
       </div>
@@ -104,7 +104,7 @@
 
     <div class="row mb-3">
       <div class="col-md-6">
-        <label for="POHx_checked" class="form-label">POHx : ตรวจตาครั้งล่าสุดเมื่อ</label>
+        <label for="POHx_checked" class="form-label"><b>POHx : </b>ตรวจตาครั้งล่าสุดเมื่อ :</label>
         <div class="input-group mb-3">
           <input type="date" name="POHx_checked" id="POHx_checked" class="form-control" />
         </div>
@@ -131,9 +131,9 @@
       </div>
       <div class="col-md-4">
         <p class="">ยาขยายม่านตา :</p>
-        <input type="radio" name="POHx_mydriatic" id="POHx_mydriatic1" class="form-check-input" />
+        <input type="radio" name="POHx_mydriatic" id="POHx_mydriatic1" class="form-check-input" value="yes" />
         <label for="POHx_mydriatic1" class="form-check-label">ใช้ &nbsp;</label>
-        <input type="radio" name="POHx_mydriatic" id="POHx_mydriatic2" class="form-check-input" />
+        <input type="radio" name="POHx_mydriatic" id="POHx_mydriatic2" class="form-check-input" value="no" />
         <label for="POHx_mydriatic2" class="form-check-label"> ไม่ใช้ </label>
       </div>
     </div>
@@ -151,7 +151,7 @@
     </div>
     <div class="row mb-3">
       <div class="col-sm-3">
-        <input class="form-check-input" type="radio" name="POHx_radio" id="POHx_radio1" onchange="toggleInput(this)" />
+        <input class="form-check-input" type="radio" name="POHx_radio" id="POHx_radio1" onchange="toggleInput(this)" value="Glasses" />
         <label class="form-check-label" for="POHx_radio1"> Glasses : </label>
       </div>
       <div class="col-sm-9" id="radioGroup">
@@ -160,7 +160,7 @@
     </div>
     <div class="row mb-3">
       <div class="col-sm-3">
-        <input class="form-check-input" type="radio" name="POHx_radio" id="POHx_radio2" onchange="toggleInput(this)" />
+        <input class="form-check-input" type="radio" name="POHx_radio" id="POHx_radio2" onchange="toggleInput(this)" value="Contact lens" />
         <label class="form-check-label" for="POHx_radio2">
           Contact lens :
         </label>
@@ -171,7 +171,7 @@
     </div>
     <div class="row mb-3">
       <div class="col-sm-3">
-        <input class="form-check-input" type="radio" name="POHx_radio" id="POHx_radio3" onchange="toggleInput(this)" />
+        <input class="form-check-input" type="radio" name="POHx_radio" id="POHx_radio3" onchange="toggleInput(this)" value="Surgery" />
         <label class="form-check-label" for="POHx_radio3"> Surgery : </label>
       </div>
       <div class="col-sm-9" id="radioGroup">
@@ -180,7 +180,7 @@
     </div>
     <div class="row mb-3">
       <div class="col-sm-3">
-        <input class="form-check-input" type="radio" name="POHx_radio" id="POHx_radio4" onchange="toggleInput(this)" />
+        <input class="form-check-input" type="radio" name="POHx_radio" id="POHx_radio4" onchange="toggleInput(this)" value="Trauma" />
         <label class="form-check-label" for="POHx_radio4"> Trauma : </label>
       </div>
       <div class="col-sm-9" id="radioGroup">
@@ -189,10 +189,8 @@
     </div>
     <div class="row mb-3">
       <div class="col-sm-3">
-        <input class="form-check-input" type="radio" name="POHx_radio" id="POHx_radio5" onchange="toggleInput(this)" />
-        <label class="form-check-label" for="POHx_radio5">
-          Infection :
-        </label>
+        <input class="form-check-input" type="radio" name="POHx_radio" id="POHx_radio5" onchange="toggleInput(this)" value="Infection" />
+        <label class="form-check-label" for="POHx_radio5">Infection : </label>
       </div>
       <div class="col-sm-9" id="radioGroup">
         <input type="text" class="form-control" name="POHx_radio_detail" id="input5" disabled />
@@ -200,66 +198,14 @@
     </div>
     <div class="row mb-3">
       <div class="col-sm-3">
-        <input class="form-check-input" type="radio" name="POHx_radio" id="POHx_radio6" onchange="toggleInput(this)" />
-        <label class="form-check-label" for="POHx_radio6">
-          Visual Training :
-        </label>
+        <input class="form-check-input" type="radio" name="POHx_radio" id="POHx_radio6" onchange="toggleInput(this)" value="Visual Training" />
+        <label class="form-check-label" for="POHx_radio6">Visual Training : </label>
       </div>
       <div class="col-sm-9" id="radioGroup">
         <input type="text" class="form-control" name="POHx_radio_detail" id="input6" disabled />
       </div>
     </div>
-    <hr />
-    <div class="row mb-3">
-      <label for="inputText" class="col-sm-12 col-form-label"><b>HA & Diplopia Hx :</b></label>
-    </div>
-    <div class="row mb-3">
-      <div class="col-sm-3">
-        <input class="form-check-input" type="radio" name="ha_radio" id="radio7" onchange="toggleInput2(this)" />
-        <label class="form-check-label" for="radio7"> HA : </label>
-      </div>
-      <div class="col-sm-9" id="radioGroup2">
-        <input type="text" class="form-control" name="ha_radio_detail" id="input7" disabled />
-      </div>
-    </div>
-    <div class="row mb-3">
-      <div class="col-sm-3">
-        <input class="form-check-input" type="radio" name="ha_radio" id="radio8" onchange="toggleInput2(this)" />
-        <label class="form-check-label" for="radio8">
-          Diplopia :
-        </label>
-      </div>
-      <div class="col-sm-9" id="radioGroup2">
-        <input type="text" class="form-control" name="ha_radio_detail" id="input8" disabled />
-      </div>
-    </div>
-    <div class="row mb-3">
-      <div class="col-sm-3">
-        <input class="form-check-input" type="radio" name="ha_radio" id="radio9" onchange="toggleInput2(this)" />
-        <label class="form-check-label" for="radio9"> Flash : </label>
-      </div>
-      <div class="col-sm-9" id="radioGroup2">
-        <input type="text" class="form-control" name="ha_radio_detail" id="input9" disabled />
-      </div>
-    </div>
-    <div class="row mb-3">
-      <div class="col-sm-3">
-        <input class="form-check-input" type="radio" name="ha_radio" id="radio10" onchange="toggleInput2(this)" />
-        <label class="form-check-label" for="radio10"> Floater : </label>
-      </div>
-      <div class="col-sm-9" id="radioGroup2">
-        <input type="text" class="form-control" name="ha_radio_detail" id="input10" disabled />
-      </div>
-    </div>
-    <div class="row mb-3">
-      <div class="col-sm-3">
-        <input class="form-check-input" type="radio" name="ha_radio" id="radio11" onchange="toggleInput2(this)" />
-        <label class="form-check-label" for="radio11"> Halos : </label>
-      </div>
-      <div class="col-sm-9" id="radioGroup2">
-        <input type="text" class="form-control" name="ha_radio_detail" id="input11" disabled />
-      </div>
-    </div>
+    
     <hr class="my-4" />
 
     <!-- End General Form Elements -->

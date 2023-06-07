@@ -24,73 +24,72 @@
     $POHx_radio = $_REQUEST['POHx_radio'];
     $POHx_radio_detail = $_REQUEST['POHx_radio_detail'];
 
-    $ha_radio = $_REQUEST['ha_radio'];
-    $ha_radio_detail = $_REQUEST['ha_radio_detail'];
+    // $ha_radio = $_REQUEST['ha_radio'];
+    // $ha_radio_detail = $_REQUEST['ha_radio_detail'];
 
-    if(empty($pi_fname)){
+    if(empty($pi_firstname)){
       $errorMsg = "Error pi_fname";
-      header("location: ../index.php");
-    } else if(empty($pi_lname)){
+      
+    } else if(empty($pi_lastname)){
       $errorMsg = "Error pi_lname";
-      header("location: ../index.php");
-    } else if(empty($pi_birth)){
+      
+    } else if(empty($pi_birthdate)){
       $errorMsg = "Error pi_birth";
-      header("location: ../index.php");
+      
     } else if(empty($pi_gender)){
       $errorMsg = "Error pi_gender";
-      header("location: ../index.php");
+      
     } else if(empty($pi_tel)){
       $errorMsg = "Error pi_tel";
-      header("location: ../index.php");
+      
     } else if(empty($pi_occupation)){
       $errorMsg = "Error pi_occupation";
-      header("location: ../index.php");
+      
     } else if(empty($pi_address)){
       $errorMsg = "Error pi_address";
-      header("location: ../index.php");
+      
     } else if(empty($cc_text)){
       $errorMsg = "Error cc_text";
-      header("location: ../index.php");
+      
     } else if(empty($cc_symptoms)){
       $errorMsg = "Error cc_symptoms";
-      header("location: ../index.php");
+      
     } else if(empty($POHx_checked)){
       $errorMsg = "Error POHx_checked";
-      header("location: ../index.php");
+      
     } else if(empty($POHx_reason)){
       $errorMsg = "Error POHx_reason";
-      header("location: ../index.php");
-    } else if(empty($pi_lname)){
-      $errorMsg = "Error pi_lname";
-      header("location: ../index.php");
+      
     } else if(empty($POHx_inspector)){
       $errorMsg = "Error POHx_inspector";
-      header("location: ../index.php");
+      
     } else if(empty($POHx_site)){
       $errorMsg = "Error POHx_site";
-      header("location: ../index.php");
+      
     } else if(empty($POHx_mydriatic)){
       $errorMsg = "Error POHx_mydriatic";
-      header("location: ../index.php");
+      
     } else if(empty($POHx_results)){
       $errorMsg = "Error POHx_results";
-      header("location: ../index.php");
+      
     } else if(empty($POHx_edited)){
       $errorMsg = "Error POHx_edited";
-      header("location: ../index.php");
+      
     } else if(empty($POHx_radio)){
       $errorMsg = "Error POHx_radio";
-      header("location: ../index.php");
+      
     } else if(empty($POHx_radio_detail)){
       $errorMsg = "Error POHx_radio_detail";
-      header("location: ../index.php");
-    } else if(empty($ha_radio)){
-      $errorMsg = "Error ha_radio";
-      header("location: ../index.php");
-    } else if(empty($ha_radio_detail)){
-      $errorMsg = "Error ha_radio_detail";
-      header("location: ../index.php");
-    } else {
+      
+    } 
+    // else if(empty($ha_radio)){
+    //   $errorMsg = "Error ha_radio";
+      
+    // } else if(empty($ha_radio_detail)){
+    //   $errorMsg = "Error ha_radio_detail";
+      
+    // } 
+    else {
       try {
         if(!isset($errorMsg)){
           $insert_stmt1 = $db->prepare("INSERT INTO personal_information(pi_firstname, pi_lastname, pi_birthdate, pi_gender, pi_address, pi_tel, pi_occupation) VALUES(:pi_firstname, :pi_lastname, :pi_birthdate, :pi_gender, :pi_address, :pi_tel, :pi_occupation)");

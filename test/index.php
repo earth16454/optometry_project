@@ -1,3 +1,7 @@
+<?php
+  require_once('process/config.php');
+  require_once('process/add.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,6 +60,14 @@
             <br />
             <div class="tab-content pt-2" id="myTabjustifiedContent">
               <form action="process/add.php" method="post">
+                <?php if(isset($errorMsg)){ ?>
+                <div class="alert alert-danger" role="alert"><?php echo $errorMsg; ?></div>
+                <?php } ?>
+
+                <?php if(isset($insertMsg)){ ?>
+                <div class="alert alert-success" role="alert"><?php echo $insertMsg; ?></div>
+                <?php } ?>
+
                 <!-- Page 1 -->
                 <?php include_once('component/page1.php'); ?>
                 <button type="submit" name="submit" class="btn btn-success w-100">Submit</button>
