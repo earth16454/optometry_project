@@ -1,3 +1,8 @@
+<?php
+
+require_once("process/config.php");
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -28,7 +33,7 @@
     <header class="p-3 mb-3 bg-white shadow-sm">
       <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-          <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
+          <a href="index.php" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
             <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
               <use xlink:href="#bootstrap"></use>
             </svg>
@@ -94,17 +99,23 @@
             </tr>
           </thead>
           <tbody>
+            <?php 
+              $select_stmt = $db->prepare("SELECT * FROM personal_information");
+              $select_stmt->execute();
+              while ($row = $select_stmt->fetch(PDO::FETCH_ASSOC)) {
+            ?>
             <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td><?php echo $row["pi_id"]; ?></td>
+              <td><?php echo $row["pi_firstname"]; ?></td>
+              <td><?php echo $row["pi_lastname"]; ?></td>
+              <td><?php echo $row["pi_birthdate"]; ?></td>
+              <td><?php echo $row["pi_gender"]; ?></td>
+              <td><?php echo $row["pi_address"]; ?></td>
+              <td><?php echo $row["pi_tel"]; ?></td>
+              <td><?php echo $row["pi_occupation"]; ?></td>
               <td><a href="details.html">View</a></td>
             </tr>
+            <?php } ?>
           </tbody>
         </table>
       </div>

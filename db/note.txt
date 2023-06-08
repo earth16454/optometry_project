@@ -32,3 +32,16 @@ CREATE TABLE `pohx` (
 CREATE TABLE `mixed` (
   `mix_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+
+CREATE TABLE user_login(
+	ul_id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  ul_email varchar(255) NOT NULL,
+  ul_password varchar(255) NOT NULL,
+  ul_name varchar(255) NOT NULL,
+  ul_tel varchar(255) NOT NULL,
+  ul_urole varchar(255) NOT NULL,
+  ul_created_at timestamp NOT NULL DEFAULT current_timestamp
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;

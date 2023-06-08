@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2023 at 06:22 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.0.25
+-- Generation Time: Jun 08, 2023 at 09:59 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,7 +29,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `additional_test` (
   `at_id` int(11) NOT NULL,
-  `at_text` varchar(255) NOT NULL
+  `at_text` varchar(255) NOT NULL,
+  `pi_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -70,7 +71,8 @@ CREATE TABLE `binocular_vission` (
   `bv_assoiate` varchar(255) NOT NULL,
   `bv_prd` varchar(255) NOT NULL,
   `bv_ta` varchar(255) NOT NULL,
-  `bv_ta_rang` varchar(255) NOT NULL
+  `bv_ta_rang` varchar(255) NOT NULL,
+  `pi_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -82,7 +84,8 @@ CREATE TABLE `binocular_vission` (
 CREATE TABLE `chief_complaint` (
   `cc_id` int(11) NOT NULL,
   `cc_text` varchar(255) NOT NULL,
-  `cc_symptoms` varchar(255) NOT NULL
+  `cc_symptoms` varchar(255) NOT NULL,
+  `pi_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -93,7 +96,8 @@ CREATE TABLE `chief_complaint` (
 
 CREATE TABLE `fmhx` (
   `FmHx_id` int(11) NOT NULL,
-  `FmHx_text` varchar(255) NOT NULL
+  `FmHx_text` varchar(255) NOT NULL,
+  `pi_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -105,7 +109,8 @@ CREATE TABLE `fmhx` (
 CREATE TABLE `ha_hx` (
   `ha_id` int(11) NOT NULL,
   `ha_radio` varchar(255) NOT NULL,
-  `ha_radio_detail` varchar(255) NOT NULL
+  `ha_radio_detail` varchar(255) NOT NULL,
+  `pi_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -118,7 +123,8 @@ CREATE TABLE `medication` (
   `med_id` int(11) NOT NULL,
   `med_radio` varchar(255) NOT NULL,
   `med_radio_detail` varchar(255) NOT NULL,
-  `med_KKK` varchar(255) NOT NULL
+  `med_KKK` varchar(255) NOT NULL,
+  `pi_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -132,7 +138,8 @@ CREATE TABLE `ohe` (
   `ohe_work` varchar(255) NOT NULL,
   `ohe_hobby` varchar(255) NOT NULL,
   `ohe_checkbox` varchar(255) NOT NULL,
-  `ohe_checkbox_detail` varchar(255) NOT NULL
+  `ohe_checkbox_detail` varchar(255) NOT NULL,
+  `pi_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -167,7 +174,8 @@ CREATE TABLE `old_rx` (
   `old_Vacc_pinhole_os` varchar(255) NOT NULL,
   `old_Vacc_near_od` varchar(255) NOT NULL,
   `old_Vacc_near_os` varchar(255) NOT NULL,
-  `old_Vacc_near_ou` varchar(255) NOT NULL
+  `old_Vacc_near_ou` varchar(255) NOT NULL,
+  `pi_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -179,7 +187,8 @@ CREATE TABLE `old_rx` (
 CREATE TABLE `patient_response` (
   `pr_id` int(11) NOT NULL,
   `pr_radio` varchar(255) NOT NULL,
-  `pr_other` varchar(255) NOT NULL
+  `pr_other` varchar(255) NOT NULL,
+  `pi_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -189,28 +198,16 @@ CREATE TABLE `patient_response` (
 --
 
 CREATE TABLE `personal_information` (
-  `id` int(11) NOT NULL,
-  `firstname` varchar(255) NOT NULL,
-  `lastname` varchar(255) NOT NULL,
-  `birthdate` varchar(255) NOT NULL,
-  `gender` varchar(255) NOT NULL,
-  `address` varchar(255) NOT NULL,
-  `tel` varchar(255) NOT NULL,
-  `occupation` varchar(255) NOT NULL,
-  `created_date` timestamp NOT NULL DEFAULT current_timestamp()
+  `pi_id` int(11) NOT NULL,
+  `pi_firstname` varchar(255) NOT NULL,
+  `pi_lastname` varchar(255) NOT NULL,
+  `pi_birthdate` varchar(255) NOT NULL,
+  `pi_gender` varchar(255) NOT NULL,
+  `pi_address` varchar(255) NOT NULL,
+  `pi_tel` varchar(255) NOT NULL,
+  `pi_occupation` varchar(255) NOT NULL,
+  `pi_created_date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Dumping data for table `personal_information`
---
-
-INSERT INTO `personal_information` (`id`, `firstname`, `lastname`, `birthdate`, `gender`, `address`, `tel`, `occupation`, `created_date`) VALUES
-(1, 'Thanaphong', 'Songsisai', '9 September 2000', 'male', '74 ม.3 ต.กลางเวียง อ.เวียงสา จ.น่าน 55110', '0947131582', 'Student', '2023-05-09 22:51:13'),
-(2, 'ธนพงษ์', 'สองสีซ้าย', '9 กันยายน, 2543', 'Please Select', '74 ม.3 ต.กลางเวียง อ.เวียงสา จ.น่าน 55110', '0947131582', 'Student', '2023-05-09 23:50:40'),
-(3, 'Thanakon', 'Ruchikanchanarat', ' , ', 'male', '99/168, Ratchadaphisek Road, Huai Khwang, Bangkok 10310, Thailand', '0926481624', 'None', '2023-05-10 22:52:57'),
-(4, 'Thanakon', 'Ruchikanchanarat', ' , ', 'male', '18 True Tower, Ratchadaphisek Road, Huai Khwang, Bangkok 10310, Thailand', '0964512682', 'None', '2023-05-10 22:54:31'),
-(5, 'Thanakon', 'Ruchikanchanarat', '3 June, 2001', 'male', '18 True Tower, Ratchadaphisek Road, Huai Khwang, Bangkok 10310, Thailand', '0926481624', 'None', '2023-05-10 22:56:01'),
-(6, 'Chanita', 'Songsisai', '10 March, 1996', 'female', '74 Moo.3, Klangwiang, Wiang Sa, Nan 55110, Thailand', '0875446772', 'Programmer', '2023-05-10 23:02:32');
 
 -- --------------------------------------------------------
 
@@ -227,7 +224,8 @@ CREATE TABLE `pmhx` (
   `PMHx_results` varchar(255) NOT NULL,
   `PMHx_pressure` varchar(255) NOT NULL,
   `PMHx_sugar` varchar(255) NOT NULL,
-  `PMHx_disease` varchar(255) NOT NULL
+  `PMHx_disease` varchar(255) NOT NULL,
+  `pi_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -246,7 +244,8 @@ CREATE TABLE `pohx` (
   `POHx_results` varchar(255) NOT NULL,
   `POHx_edited` varchar(255) NOT NULL,
   `POHx_radio` varchar(255) NOT NULL,
-  `POHx_radio_detail` varchar(255) NOT NULL
+  `POHx_radio_detail` varchar(255) NOT NULL,
+  `pi_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -277,7 +276,8 @@ CREATE TABLE `preliminary_exam` (
   `pe_grid` varchar(255) NOT NULL,
   `pe_grid_od` varchar(255) NOT NULL,
   `pe_grid_os` varchar(255) NOT NULL,
-  `pe_grid_time` varchar(255) NOT NULL
+  `pe_grid_time` varchar(255) NOT NULL,
+  `pi_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -309,7 +309,8 @@ CREATE TABLE `prescription` (
   `pc_fitting_os` varchar(255) NOT NULL,
   `pc_checkbox` varchar(255) NOT NULL,
   `pc_checkbox_detail` varchar(255) NOT NULL,
-  `pc_note` varchar(255) NOT NULL
+  `pc_note` varchar(255) NOT NULL,
+  `pi_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -339,7 +340,8 @@ CREATE TABLE `refraction` (
   `ref_ms_ou_va` varchar(255) NOT NULL,
   `ref_bs_od` varchar(255) NOT NULL,
   `ref_bs_os` varchar(255) NOT NULL,
-  `ref_bs_ou_va` varchar(255) NOT NULL
+  `ref_bs_ou_va` varchar(255) NOT NULL,
+  `pi_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -405,7 +407,8 @@ CREATE TABLE `slit_lamp` (
   `ps_img` varchar(255) NOT NULL,
   `ps_treatment` varchar(500) NOT NULL,
   `ps_next` varchar(255) NOT NULL,
-  `ps_examinedby` varchar(255) NOT NULL
+  `ps_examinedby` varchar(255) NOT NULL,
+  `pi_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
@@ -416,97 +419,112 @@ CREATE TABLE `slit_lamp` (
 -- Indexes for table `additional_test`
 --
 ALTER TABLE `additional_test`
-  ADD PRIMARY KEY (`at_id`);
+  ADD PRIMARY KEY (`at_id`),
+  ADD KEY `personal_information fk` (`pi_id`);
 
 --
 -- Indexes for table `binocular_vission`
 --
 ALTER TABLE `binocular_vission`
-  ADD PRIMARY KEY (`bv_id`);
+  ADD PRIMARY KEY (`bv_id`),
+  ADD KEY `personal_information fk2` (`pi_id`);
 
 --
 -- Indexes for table `chief_complaint`
 --
 ALTER TABLE `chief_complaint`
-  ADD PRIMARY KEY (`cc_id`);
+  ADD PRIMARY KEY (`cc_id`),
+  ADD KEY `personal_information fk_cc` (`pi_id`);
 
 --
 -- Indexes for table `fmhx`
 --
 ALTER TABLE `fmhx`
-  ADD PRIMARY KEY (`FmHx_id`);
+  ADD PRIMARY KEY (`FmHx_id`),
+  ADD KEY `personal_information fk_fmhx` (`pi_id`);
 
 --
 -- Indexes for table `ha_hx`
 --
 ALTER TABLE `ha_hx`
-  ADD PRIMARY KEY (`ha_id`);
+  ADD PRIMARY KEY (`ha_id`),
+  ADD KEY `personal_information fk_hahx` (`pi_id`);
 
 --
 -- Indexes for table `medication`
 --
 ALTER TABLE `medication`
-  ADD PRIMARY KEY (`med_id`);
+  ADD PRIMARY KEY (`med_id`),
+  ADD KEY `personal_information fk_med` (`pi_id`);
 
 --
 -- Indexes for table `ohe`
 --
 ALTER TABLE `ohe`
-  ADD PRIMARY KEY (`ohe_id`);
+  ADD PRIMARY KEY (`ohe_id`),
+  ADD KEY `personal_information fk_ohe` (`pi_id`);
 
 --
 -- Indexes for table `old_rx`
 --
 ALTER TABLE `old_rx`
-  ADD PRIMARY KEY (`old_id`);
+  ADD PRIMARY KEY (`old_id`),
+  ADD KEY `personal_information fk_old` (`pi_id`);
 
 --
 -- Indexes for table `patient_response`
 --
 ALTER TABLE `patient_response`
-  ADD PRIMARY KEY (`pr_id`);
+  ADD PRIMARY KEY (`pr_id`),
+  ADD KEY `personal_information fk_pr` (`pi_id`);
 
 --
 -- Indexes for table `personal_information`
 --
 ALTER TABLE `personal_information`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`pi_id`);
 
 --
 -- Indexes for table `pmhx`
 --
 ALTER TABLE `pmhx`
-  ADD PRIMARY KEY (`PMHx_id`);
+  ADD PRIMARY KEY (`PMHx_id`),
+  ADD KEY `personal_information fk_pmhx` (`pi_id`);
 
 --
 -- Indexes for table `pohx`
 --
 ALTER TABLE `pohx`
-  ADD PRIMARY KEY (`POHx_id`);
+  ADD PRIMARY KEY (`POHx_id`),
+  ADD KEY `personal_information fk_pohx` (`pi_id`);
 
 --
 -- Indexes for table `preliminary_exam`
 --
 ALTER TABLE `preliminary_exam`
-  ADD PRIMARY KEY (`pe_id`);
+  ADD PRIMARY KEY (`pe_id`),
+  ADD KEY `personal_information fk_pe` (`pi_id`);
 
 --
 -- Indexes for table `prescription`
 --
 ALTER TABLE `prescription`
-  ADD PRIMARY KEY (`pc_id`);
+  ADD PRIMARY KEY (`pc_id`),
+  ADD KEY `personal_information fk_pc` (`pi_id`);
 
 --
 -- Indexes for table `refraction`
 --
 ALTER TABLE `refraction`
-  ADD PRIMARY KEY (`ref_id`);
+  ADD PRIMARY KEY (`ref_id`),
+  ADD KEY `personal_information fk_ref` (`pi_id`);
 
 --
 -- Indexes for table `slit_lamp`
 --
 ALTER TABLE `slit_lamp`
-  ADD PRIMARY KEY (`as_id`);
+  ADD PRIMARY KEY (`as_id`),
+  ADD KEY `personal_information fk_sl` (`pi_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -570,7 +588,7 @@ ALTER TABLE `patient_response`
 -- AUTO_INCREMENT for table `personal_information`
 --
 ALTER TABLE `personal_information`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `pi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `pmhx`
@@ -607,6 +625,100 @@ ALTER TABLE `refraction`
 --
 ALTER TABLE `slit_lamp`
   MODIFY `as_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `additional_test`
+--
+ALTER TABLE `additional_test`
+  ADD CONSTRAINT `personal_information fk` FOREIGN KEY (`pi_id`) REFERENCES `personal_information` (`pi_id`);
+
+--
+-- Constraints for table `binocular_vission`
+--
+ALTER TABLE `binocular_vission`
+  ADD CONSTRAINT `personal_information fk2` FOREIGN KEY (`pi_id`) REFERENCES `personal_information` (`pi_id`);
+
+--
+-- Constraints for table `chief_complaint`
+--
+ALTER TABLE `chief_complaint`
+  ADD CONSTRAINT `personal_information fk_cc` FOREIGN KEY (`pi_id`) REFERENCES `personal_information` (`pi_id`);
+
+--
+-- Constraints for table `fmhx`
+--
+ALTER TABLE `fmhx`
+  ADD CONSTRAINT `personal_information fk_fmhx` FOREIGN KEY (`pi_id`) REFERENCES `personal_information` (`pi_id`);
+
+--
+-- Constraints for table `ha_hx`
+--
+ALTER TABLE `ha_hx`
+  ADD CONSTRAINT `personal_information fk_hahx` FOREIGN KEY (`pi_id`) REFERENCES `personal_information` (`pi_id`);
+
+--
+-- Constraints for table `medication`
+--
+ALTER TABLE `medication`
+  ADD CONSTRAINT `personal_information fk_med` FOREIGN KEY (`pi_id`) REFERENCES `personal_information` (`pi_id`);
+
+--
+-- Constraints for table `ohe`
+--
+ALTER TABLE `ohe`
+  ADD CONSTRAINT `personal_information fk_ohe` FOREIGN KEY (`pi_id`) REFERENCES `personal_information` (`pi_id`);
+
+--
+-- Constraints for table `old_rx`
+--
+ALTER TABLE `old_rx`
+  ADD CONSTRAINT `personal_information fk_old` FOREIGN KEY (`pi_id`) REFERENCES `personal_information` (`pi_id`);
+
+--
+-- Constraints for table `patient_response`
+--
+ALTER TABLE `patient_response`
+  ADD CONSTRAINT `personal_information fk_pr` FOREIGN KEY (`pi_id`) REFERENCES `personal_information` (`pi_id`);
+
+--
+-- Constraints for table `pmhx`
+--
+ALTER TABLE `pmhx`
+  ADD CONSTRAINT `personal_information fk_pmhx` FOREIGN KEY (`pi_id`) REFERENCES `personal_information` (`pi_id`);
+
+--
+-- Constraints for table `pohx`
+--
+ALTER TABLE `pohx`
+  ADD CONSTRAINT `personal_information fk_pohx` FOREIGN KEY (`pi_id`) REFERENCES `personal_information` (`pi_id`);
+
+--
+-- Constraints for table `preliminary_exam`
+--
+ALTER TABLE `preliminary_exam`
+  ADD CONSTRAINT `personal_information fk_pe` FOREIGN KEY (`pi_id`) REFERENCES `personal_information` (`pi_id`);
+
+--
+-- Constraints for table `prescription`
+--
+ALTER TABLE `prescription`
+  ADD CONSTRAINT `personal_information fk_pc` FOREIGN KEY (`pi_id`) REFERENCES `personal_information` (`pi_id`);
+
+--
+-- Constraints for table `refraction`
+--
+ALTER TABLE `refraction`
+  ADD CONSTRAINT `personal_information fk_ref` FOREIGN KEY (`pi_id`) REFERENCES `personal_information` (`pi_id`);
+
+--
+-- Constraints for table `slit_lamp`
+--
+ALTER TABLE `slit_lamp`
+  ADD CONSTRAINT `personal_information fk_sl` FOREIGN KEY (`pi_id`) REFERENCES `personal_information` (`pi_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
