@@ -50,15 +50,15 @@
       <div class="col-12 col-md-6">
         <label for="pi_gender" class="form-label me-2">Gender :</label><br />
         <div class="form-check form-check-inline">
-          <input type="radio" name="pi_gender" id="male" class="form-check-input" required />
+          <input type="radio" name="pi_gender" id="male" class="form-check-input" value="male" required />
           <label for="male" class="form-check-label">Male</label>
         </div>
         <div class="form-check form-check-inline">
-          <input type="radio" name="pi_gender" id="female" class="form-check-input" />
+          <input type="radio" name="pi_gender" id="female" class="form-check-input" value="female" />
           <label for="female" class="form-check-label">Female</label>
         </div>
         <div class="form-check form-check-inline">
-          <input type="radio" name="pi_gender" id="other" class="form-check-input" />
+          <input type="radio" name="pi_gender" id="other" class="form-check-input" value="LGBTQ+" />
           <label for="other" class="form-check-label">N/A</label>
         </div>
       </div>
@@ -137,9 +137,9 @@
       </div>
       <div class="col-md-4">
         <p class="">ยาขยายม่านตา :</p>
-        <input type="radio" name="POHx_mydriatic" id="POHx_mydriatic1" class="form-check-input" required />
+        <input type="radio" name="POHx_mydriatic" id="POHx_mydriatic1" class="form-check-input" value="yes" required />
         <label for="POHx_mydriatic1" class="form-check-label">ใช้ &nbsp;</label>
-        <input type="radio" name="POHx_mydriatic" id="POHx_mydriatic2" class="form-check-input" />
+        <input type="radio" name="POHx_mydriatic" id="POHx_mydriatic2" class="form-check-input" value="no" />
         <label for="POHx_mydriatic2" class="form-check-label"> ไม่ใช้ </label>
       </div>
     </div>
@@ -157,7 +157,7 @@
     </div>
     <div class="row mb-3">
       <div class="col-sm-3">
-        <input class="form-check-input" type="radio" name="POHx_radio" id="POHx_radio1" onchange="toggleInput(this)" required />
+        <input class="form-check-input" type="radio" name="POHx_radio" id="POHx_radio1" onchange="toggleInput(this)" value="Glasses" required />
         <label class="form-check-label" for="POHx_radio1"> Glasses : </label>
       </div>
       <div class="col-sm-9" id="radioGroup">
@@ -166,7 +166,7 @@
     </div>
     <div class="row mb-3">
       <div class="col-sm-3">
-        <input class="form-check-input" type="radio" name="POHx_radio" id="POHx_radio2" onchange="toggleInput(this)" />
+        <input class="form-check-input" type="radio" name="POHx_radio" id="POHx_radio2" onchange="toggleInput(this)" value="Contact lens" />
         <label class="form-check-label" for="POHx_radio2">
           Contact lens :
         </label>
@@ -177,7 +177,7 @@
     </div>
     <div class="row mb-3">
       <div class="col-sm-3">
-        <input class="form-check-input" type="radio" name="POHx_radio" id="POHx_radio3" onchange="toggleInput(this)" />
+        <input class="form-check-input" type="radio" name="POHx_radio" id="POHx_radio3" onchange="toggleInput(this)" value="Surgery" />
         <label class="form-check-label" for="POHx_radio3"> Surgery : </label>
       </div>
       <div class="col-sm-9" id="radioGroup">
@@ -186,7 +186,7 @@
     </div>
     <div class="row mb-3">
       <div class="col-sm-3">
-        <input class="form-check-input" type="radio" name="POHx_radio" id="POHx_radio4" onchange="toggleInput(this)" />
+        <input class="form-check-input" type="radio" name="POHx_radio" id="POHx_radio4" onchange="toggleInput(this)" value="Trauma" />
         <label class="form-check-label" for="POHx_radio4"> Trauma : </label>
       </div>
       <div class="col-sm-9" id="radioGroup">
@@ -195,7 +195,7 @@
     </div>
     <div class="row mb-3">
       <div class="col-sm-3">
-        <input class="form-check-input" type="radio" name="POHx_radio" id="POHx_radio5" onchange="toggleInput(this)" />
+        <input class="form-check-input" type="radio" name="POHx_radio" id="POHx_radio5" onchange="toggleInput(this)" value="Infection" />
         <label class="form-check-label" for="POHx_radio5">
           Infection :
         </label>
@@ -206,7 +206,7 @@
     </div>
     <div class="row mb-3">
       <div class="col-sm-3">
-        <input class="form-check-input" type="radio" name="POHx_radio" id="POHx_radio6" onchange="toggleInput(this)" />
+        <input class="form-check-input" type="radio" name="POHx_radio" id="POHx_radio6" onchange="toggleInput(this)" value="Visual Training" />
         <label class="form-check-label" for="POHx_radio6">
           Visual Training :
         </label>
@@ -221,7 +221,7 @@
     </div>
     <div class="row mb-3">
       <div class="col-sm-3">
-        <input class="form-check-input" type="radio" name="ha_radio" id="radio7" onchange="toggleInput2(this)" required />
+        <input class="form-check-input" type="radio" name="ha_radio" id="radio7" onchange="toggleInput2(this)" value="HA" required />
         <label class="form-check-label" for="radio7"> HA : </label>
       </div>
       <div class="col-sm-9" id="radioGroup2">
@@ -230,7 +230,7 @@
     </div>
     <div class="row mb-3">
       <div class="col-sm-3">
-        <input class="form-check-input" type="radio" name="ha_radio" id="radio8" onchange="toggleInput2(this)" />
+        <input class="form-check-input" type="radio" name="ha_radio" id="radio8" onchange="toggleInput2(this)" value="Diplopia" />
         <label class="form-check-label" for="radio8">
           Diplopia :
         </label>
@@ -241,7 +241,7 @@
     </div>
     <div class="row mb-3">
       <div class="col-sm-3">
-        <input class="form-check-input" type="radio" name="ha_radio" id="radio9" onchange="toggleInput2(this)" />
+        <input class="form-check-input" type="radio" name="ha_radio" id="radio9" onchange="toggleInput2(this)" value="Flash" />
         <label class="form-check-label" for="radio9"> Flash : </label>
       </div>
       <div class="col-sm-9" id="radioGroup2">
@@ -250,7 +250,7 @@
     </div>
     <div class="row mb-3">
       <div class="col-sm-3">
-        <input class="form-check-input" type="radio" name="ha_radio" id="radio10" onchange="toggleInput2(this)" />
+        <input class="form-check-input" type="radio" name="ha_radio" id="radio10" onchange="toggleInput2(this)" value="Floater" />
         <label class="form-check-label" for="radio10"> Floater : </label>
       </div>
       <div class="col-sm-9" id="radioGroup2">
@@ -259,7 +259,7 @@
     </div>
     <div class="row mb-3">
       <div class="col-sm-3">
-        <input class="form-check-input" type="radio" name="ha_radio" id="radio11" onchange="toggleInput2(this)" />
+        <input class="form-check-input" type="radio" name="ha_radio" id="radio11" onchange="toggleInput2(this)" value="Halos" />
         <label class="form-check-label" for="radio11"> Halos : </label>
       </div>
       <div class="col-sm-9" id="radioGroup2">
@@ -326,14 +326,14 @@
       <legend class="col-form-label col-sm-2 pt-0">Medication :</legend>
       <div class="col-sm-10">
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="med_radio" id="radio12" onchange="toggleInput3(this)" required />
+          <input class="form-check-input" type="radio" name="med_radio" id="radio12" onchange="toggleInput3(this)" value="Med" required />
           <label class="form-check-label" for="radio12"> Med </label>
           <div class="col-sm-12" id="radioGroup3">
             <input type="text" name="med_radio_detail" class="form-control" id="input12" disabled required />
           </div>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="med_radio" id="radio13" onchange="toggleInput3(this)" />
+          <input class="form-check-input" type="radio" name="med_radio" id="radio13" onchange="toggleInput3(this)" value="OTC" />
           <label class="form-check-label" for="radio13"> OTC </label>
           <div class="col-sm-12" id="radioGroup3">
             <input type="text" name="med_radio_detail" class="form-control" id="input13" disabled required />
@@ -380,14 +380,14 @@
     </div>
     <div class="row mb-3">
       <div class="col-md-6">
-        <input class="form-check-input" type="checkbox" name="ohe_checkbox1" id="checkbox30" onclick="toggleInput6(this)" required />
+        <input class="form-check-input" type="checkbox" name="ohe_checkbox1" id="checkbox30" value="Computer (Laptop / PC)" onclick="toggleInput6(this)" />
         <label for="checkbox30" class="form-label">Computer (Laptop / PC) :</label>
         <div class="input-group mb-3" id="checkbox1Group1">
           <input type="text" name="ohe_checkbox_detail1" class="form-control" id="input30" disabled required />
         </div>
       </div>
       <div class="col-md-6">
-        <input class="form-check-input" type="checkbox" name="ohe_checkbox2" id="checkbox31" onclick="toggleInput6(this)" required />
+        <input class="form-check-input" type="checkbox" name="ohe_checkbox2" id="checkbox31" value="Tablet/Smartphone" onclick="toggleInput6(this)" />
         <label for="checkbox31" class="form-label">Tablet/Smartphone :</label>
         <div class="input-group mb-3" id="checkbox1Group1">
           <input type="text" name="ohe_checkbox_detail2" class="form-control" id="input31" disabled required />
@@ -396,14 +396,14 @@
     </div>
     <div class="row mb-3">
       <div class="col-md-6">
-        <input class="form-check-input" type="checkbox" name="ohe_checkbox3" id="checkbox32" onclick="toggleInput6(this)" required />
+        <input class="form-check-input" type="checkbox" name="ohe_checkbox3" id="checkbox32" value="Smoking" onclick="toggleInput6(this)" />
         <label for="checkbox32" class="form-label">Smoking :</label>
         <div class="input-group mb-3">
           <input type="text" name="ohe_checkbox_detail3" class="form-control" id="input32" disabled required />
         </div>
       </div>
       <div class="col-md-6">
-        <input class="form-check-input" type="checkbox" name="ohe_checkbox4" id="checkbox33" onclick="toggleInput6(this)" required />
+        <input class="form-check-input" type="checkbox" name="ohe_checkbox4" id="checkbox33" value="Alcohol" onclick="toggleInput6(this)" />
         <label for="checkbox33" class="form-label">Alcohol :</label>
         <div class="input-group mb-3">
           <input type="text" class="form-control" name="ohe_checkbox_detail4" id="input33" disabled required />
@@ -417,19 +417,19 @@
       </legend>
       <div class="col-sm-10">
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="pr_radio" id="pr_radio1" required />
+          <input class="form-check-input" type="radio" name="pr_radio" id="pr_radio1" value="1x" required />
           <label class="form-check-label" for="pr_radio1"> 1x </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="pr_radio" id="pr_radio2" />
+          <input class="form-check-input" type="radio" name="pr_radio" id="pr_radio2" value="2x" />
           <label class="form-check-label" for="pr_radio2"> 2x </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="pr_radio" id="pr_radio3" />
+          <input class="form-check-input" type="radio" name="pr_radio" id="pr_radio3" value="3x" />
           <label class="form-check-label" for="pr_radio3"> 3x </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="pr_radio" id="pr_radio4" />
+          <input class="form-check-input" type="radio" name="pr_radio" id="pr_radio4" value="4x" />
           <label class="form-check-label" for="pr_radio4"> 4x </label>
         </div>
       </div>

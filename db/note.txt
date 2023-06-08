@@ -29,9 +29,7 @@ CREATE TABLE `pohx` (
   `POHx_radio_detail` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE `mixed` (
-  `mix_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 
 
