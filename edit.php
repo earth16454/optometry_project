@@ -61,7 +61,7 @@
                 <?php include_once('component/edit_page1.php'); ?>
 
                 <!-- Page 2 -->
-                <?php include_once('component/edit2.html'); ?>
+                <?php include_once('component/edit_page2.php'); ?>
 
                 <!-- Page 3 -->
                 <?php include_once('component/edit3.html'); ?>

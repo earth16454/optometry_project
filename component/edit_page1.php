@@ -99,7 +99,7 @@ require_once('edit1.php');
     <div class="row mb-3">
       <label for="cc_text" class="form-label">Chief Complaint :</label>
       <div class="col-sm-9">
-        <textarea class="form-control" rows="4" name="cc_text" id="cc_text" required ></textarea>
+        <textarea class="form-control" rows="4" name="cc_text" id="cc_text" required ><?php echo $cc_text; ?></textarea>
       </div>
       <div class="col-sm-3">
         <div class="form-check">
@@ -119,13 +119,13 @@ require_once('edit1.php');
       <div class="col-md-6">
         <label for="POHx_checked" class="form-label">POHx : ตรวจตาครั้งล่าสุดเมื่อ</label>
         <div class="input-group mb-3">
-          <input type="date" name="POHx_checked" id="POHx_checked" class="form-control" required />
+          <input type="date" name="POHx_checked" id="POHx_checked" class="form-control" value="<?php echo $POHx_checked; ?>" required />
         </div>
       </div>
       <div class="col-md-6">
         <label for="POHx_reason" class="form-label">สาเหตุที่เข้ารับการตรวจ :</label>
         <div class="input-group mb-3">
-          <input type="text" name="POHx_reason" id="POHx_reason" class="form-control" required />
+          <input type="text" name="POHx_reason" id="POHx_reason" class="form-control" value="<?php echo $POHx_reason; ?>" required />
         </div>
       </div>
     </div>
@@ -133,13 +133,13 @@ require_once('edit1.php');
       <div class="col-md-4">
         <label for="POHx_inspector" class="form-label">ผู้ตรวจ :</label>
         <div class="input-group mb-3">
-          <input type="text" name="POHx_inspector" id="POHx_inspector" class="form-control" required />
+          <input type="text" name="POHx_inspector" id="POHx_inspector" class="form-control" value="<?php echo $POHx_inspector; ?>" required />
         </div>
       </div>
       <div class="col-md-4">
         <label for="POHx_site" class="form-label">สถานที่ตรวจ :</label>
         <div class="input-group mb-3">
-          <input type="text" name="POHx_site" id="POHx_site" class="form-control" required />
+          <input type="text" name="POHx_site" id="POHx_site" class="form-control" value="<?php echo $POHx_site; ?>" required />
         </div>
       </div>
       <div class="col-md-4">
@@ -153,13 +153,13 @@ require_once('edit1.php');
     <div class="row mb-3">
       <label for="POHx_results" class="col-sm-3 col-form-label">ผลการตรวจ :</label>
       <div class="col-sm-9">
-        <input type="text" name="POHx_results" id="POHx_results" class="form-control" required />
+        <input type="text" name="POHx_results" id="POHx_results" class="form-control" value="<?php echo $POHx_results; ?>" required />
       </div>
     </div>
     <div class="row mb-3">
       <label for="POHx_edited" class="col-sm-3 col-form-label">ได้รับการแก้ไขโดย :</label>
       <div class="col-sm-9">
-        <input type="text" name="POHx_edited" id="POHx_edited" class="form-control" required />
+        <input type="text" name="POHx_edited" id="POHx_edited" class="form-control" value="<?php echo $POHx_edited; ?>" required />
       </div>
     </div>
     <div class="row mb-3">
@@ -278,13 +278,13 @@ require_once('edit1.php');
       <div class="col-md-6">
         <label for="PMHx_checked" class="form-label">PMHx : ตรวจสุขภาพครั้งล่าสุดเมื่อ</label>
         <div class="input-group mb-3">
-          <input type="date" name="PMHx_checked" id="PMHx_checked" class="form-control" required />
+          <input type="date" name="PMHx_checked" id="PMHx_checked" class="form-control" value="<?php echo $PMHx_checked; ?>" required />
         </div>
       </div>
       <div class="col-md-6">
         <label for="PMHx_reason" class="form-label">สาเหตุที่เข้ารับการตรวจ :</label>
         <div class="input-group mb-3">
-          <input type="text" name="PMHx_reason" id="PMHx_reason" class="form-control" required />
+          <input type="text" name="PMHx_reason" id="PMHx_reason" class="form-control" value="<?php echo $PMHx_reason; ?>" required />
         </div>
       </div>
     </div>
@@ -292,13 +292,13 @@ require_once('edit1.php');
       <div class="col-md-6">
         <label for="PMHx_inspector" class="form-label">ผู้ตรวจ :</label>
         <div class="input-group mb-3">
-          <input type="text" name="PMHx_inspector" id="PMHx_inspector" class="form-control" required />
+          <input type="text" name="PMHx_inspector" id="PMHx_inspector" class="form-control" value="<?php echo $PMHx_inspector; ?>" required />
         </div>
       </div>
       <div class="col-md-6">
         <label for="PMHx_site" class="form-label">สถานที่ตรวจ :</label>
         <div class="input-group mb-3">
-          <input type="text" name="PMHx_site" id="PMHx_site" class="form-control" required />
+          <input type="text" name="PMHx_site" id="PMHx_site" class="form-control" value="<?php echo $PMHx_site; ?>" required />
         </div>
       </div>
     </div>
@@ -306,26 +306,26 @@ require_once('edit1.php');
       <div class="col-md-4">
         <label for="PMHx_results" class="form-label">ผลการตรวจ :</label>
         <div class="input-group mb-3">
-          <input type="text" name="PMHx_results" id="PMHx_results" class="form-control" required />
+          <input type="text" name="PMHx_results" id="PMHx_results" class="form-control" value="<?php echo $PMHx_results; ?>" required />
         </div>
       </div>
       <div class="col-md-4">
         <label for="PMHx_pressure" class="form-label">Blood pressure :</label>
         <div class="input-group mb-3">
-          <input type="text" name="PMHx_pressure" id="PMHx_pressure" class="form-control" required />
+          <input type="text" name="PMHx_pressure" id="PMHx_pressure" class="form-control" value="<?php echo $PMHx_pressure; ?>" required />
         </div>
       </div>
       <div class="col-md-4">
         <label for="PMHx_sugar" class="form-label">Blood Sugar :</label>
         <div class="input-group mb-3">
-          <input type="text" name="PMHx_sugar" id="PMHx_sugar" class="form-control" required />
+          <input type="text" name="PMHx_sugar" id="PMHx_sugar" class="form-control" value="<?php echo $PMHx_sugar; ?>" required />
         </div>
       </div>
     </div>
     <div class="row mb-3">
       <label for="PMHx_disease" class="col-sm-2 col-form-label">โรคประจำตัว :</label>
       <div class="col-sm-10">
-        <input type="text" name="PMHx_disease" id="PMHx_disease" class="form-control" required />
+        <input type="text" name="PMHx_disease" id="PMHx_disease" class="form-control" value="<?php echo $PMHx_disease; ?>" required />
       </div>
     </div>
     <hr />
@@ -349,14 +349,14 @@ require_once('edit1.php');
       </div>
       <label for="med_KKK" class="col-sm-2 col-form-label">KMA/KEA/KFA :</label>
       <div class="col-sm-10">
-        <textarea class="form-control" rows="4" name="med_KKK" id="med_KKK" required ></textarea>
+        <textarea class="form-control" rows="4" name="med_KKK" id="med_KKK" required ><?php echo $med_KKK; ?></textarea>
       </div>
     </div>
     <hr />
     <div class="row mb-3">
       <label for="FmHx_text" class="col-sm-2 col-form-label">FmHx :</label>
       <div class="col-sm-10">
-        <textarea class="form-control" rows="4" name="FmHx_text" id="FmHx_text" required></textarea>
+        <textarea class="form-control" rows="4" name="FmHx_text" id="FmHx_text" required><?php echo $FmHx_text; ?></textarea>
       </div>
     </div>
     <hr />
@@ -375,13 +375,13 @@ require_once('edit1.php');
       <div class="col-md-6">
         <label for="ohe_work" class="form-label">Work :</label>
         <div class="input-group mb-3">
-          <input type="text" name="ohe_work" id="ohe_work" class="form-control" required />
+          <input type="text" name="ohe_work" id="ohe_work" class="form-control" value="<?php echo $ohe_work; ?>" required />
         </div>
       </div>
       <div class="col-md-6">
         <label for="ohe_hobby" class="form-label">Hobby :</label>
         <div class="input-group mb-3">
-          <input type="text" name="ohe_hobby" id="ohe_hobby" class="form-control" required />
+          <input type="text" name="ohe_hobby" id="ohe_hobby" class="form-control" value="<?php echo $ohe_hobby; ?>" required />
         </div>
       </div>
     </div>
@@ -444,7 +444,7 @@ require_once('edit1.php');
     <div class="row mb-3">
       <label for="pr_other" class="col-sm-3 col-form-label">ข้อมูลสังเกตุอื่นๆ :</label>
       <div class="col-sm-9">
-        <textarea class="form-control" rows="4" name="pr_other" id="pr_other" required ></textarea>
+        <textarea class="form-control" rows="4" name="pr_other" id="pr_other" required ><?php echo $pr_other; ?></textarea>
       </div>
     </div>
     <hr />
