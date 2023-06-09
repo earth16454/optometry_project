@@ -1,7 +1,4 @@
-<?php
-require_once('process/config.php');
-require_once('process/add.php');
-?>
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,25 +54,9 @@ require_once('process/add.php');
               </li>
             </ul>
             <br />
-            <form action="" method="post" class="needs-validation" novalidate>
-              <div class="tab-content pt-2" id="myTabjustifiedContent">
-                <?php if (isset($_SESSION['error'])) { ?>
-                  <div class="alert alert-danger" role="alert">
-                    <?php
-                    echo $_SESSION['error'];
-                    unset($_SESSION['error']);
-                    ?>
-                  </div>
-                <?php } ?>
-                <?php if (isset($_SESSION['success'])) { ?>
-                  <div class="alert alert-success" role="alert">
-                    <?php
-                    echo $_SESSION['success'];
-                    unset($_SESSION['success']);
-                    ?>
-                  </div>
-                <?php } ?>
 
+            <form action="process/add.php" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
+              <div class="tab-content pt-2" id="myTabjustifiedContent">
                 <!-- Page 1 -->
                 <?php include_once('component/page1.html'); ?>
 
@@ -85,7 +66,7 @@ require_once('process/add.php');
                 <!-- Page 3 -->
                 <?php include_once('component/page3.html'); ?>
 
-                <!-- <button type="submit" name="submit" class="btn btn-success w-100">Submit</button> -->
+                <button type="submit" name="submit" class="btn btn-success w-100">Submit</button>
 
               </div>
             </form>
@@ -100,19 +81,16 @@ require_once('process/add.php');
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
     <div class="copyright">
-      &copy; Copyright <strong><span>ลงชื่อ</span></strong>. All Rights Reserved
+      &copy; Copyright <strong><span>Thanaphong Songsisai</span></strong>. All Rights Reserved
     </div>
-    <div class="credits">Designed by <a href="https://www.facebook.com/Frankie651">Frankie</a></div>
+    <div class="credits">Designed by <a href="https://getlinks.com/p/9sep?fbclid=IwAR3fb972dHqISVes5p5a5MdYuudvISWeoAwfi3mjOKv75HHn1j9mhtg9Egg">9sep</a></div>
   </footer>
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-
-
-
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/main.js"></script>
 
+  <script src="assets/js/main.js"></script>
   <script>
     function toggleInput(radio) {
       var inputId = "input" + radio.id.substring(10); // ดึงเลขท้ายจาก id ของ radio
@@ -235,7 +213,6 @@ require_once('process/add.php');
       });
     })();
   </script>
-
 </body>
 
 </html>

@@ -104,8 +104,8 @@ if (isset($_REQUEST['submit'])) {
   $old_VAsc_near_od = $_REQUEST['vasc_near_od'];
   $old_VAsc_near_os = $_REQUEST['vasc_near_os'];
   $old_VAsc_near_ou = $_REQUEST['vasc_near_ou'];
-  $old_VAsc_phinhole_od = $_REQUEST['vasc_phinhole_od'];
-  $old_VAsc_phinhole_os = $_REQUEST['vasc_phinhole_os'];
+  $old_VAsc_pinhole_od = $_REQUEST['vasc_pinhole_od'];
+  $old_VAsc_pinhole_os = $_REQUEST['vasc_pinhole_os'];
 
   $old_VAcc_distance_od = $_REQUEST['vacc_distance_od'];
   $old_VAcc_distance_os = $_REQUEST['vacc_distance_os'];
@@ -113,8 +113,8 @@ if (isset($_REQUEST['submit'])) {
   $old_VAcc_near_od = $_REQUEST['vacc_near_od'];
   $old_VAcc_near_os = $_REQUEST['vacc_near_os'];
   $old_VAcc_near_ou = $_REQUEST['vacc_near_ou'];
-  $old_VAcc_phinhole_od = $_REQUEST['vacc_phinhole_od'];
-  $old_VAcc_phinhole_os = $_REQUEST['vacc_phinhole_os'];
+  $old_VAcc_pinhole_od = $_REQUEST['vacc_pinhole_od'];
+  $old_VAcc_pinhole_os = $_REQUEST['vacc_pinhole_os'];
 
   // Table 11 : preliminary_exam
   $pe_distance = $_REQUEST['pd_distance'];
@@ -238,14 +238,7 @@ if (isset($_REQUEST['submit'])) {
   $as_p_accommodate_os = $_REQUEST['as_p_accommodate_os'];
   $as_p_marcus_od = $_REQUEST['as_p_marcus_od'];
   $as_p_marcus_os = $_REQUEST['as_p_marcus_os'];
-
   $as_img = $_FILES['as_img'];
-  
-  // $path = 'myfolder/myimage.png';
-  // $type = pathinfo($path, PATHINFO_EXTENSION);
-  // $data = file_get_contents($path);
-  // $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
-
   $as_assessment = $_REQUEST['as_assessment'];
 
   $ps_radio = $_REQUEST['ps_radio'];
@@ -269,7 +262,6 @@ if (isset($_REQUEST['submit'])) {
   $ps_bg_os = $_REQUEST['ps_bg_os'];
   $ps_periphery_od = $_REQUEST['ps_periphery_od'];
   $ps_periphery_os = $_REQUEST['ps_periphery_os'];
-
   $ps_img = $_FILES['ps_img'];
   $ps_treatment = $_REQUEST['ps_treatment'];
   $ps_next = $_REQUEST['ps_next'];
@@ -680,8 +672,8 @@ if (isset($_REQUEST['submit'])) {
     $fileActExt2 = strtolower(end($extension2));
     $fileNew1 = rand() . "." . $fileActExt1;  // rand function create the rand number 
     $fileNew2 = rand() . "." . $fileActExt2;  // rand function create the rand number 
-    $filePath1 = 'uploads/' . $fileNew1;
-    $filePath2 = 'uploads/' . $fileNew2;
+    $filePath1 = '../uploads/' . $fileNew1;
+    $filePath2 = '../uploads/' . $fileNew2;
 
     $resultImg = in_array($fileActExt1, $allow) && in_array($fileActExt2, $allow);
     $checkResultImg = ($as_img['size'] > 0 && $as_img['error'] == 0) && ($ps_img['size'] > 0 && $ps_img['error'] == 0);

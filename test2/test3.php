@@ -2,27 +2,29 @@
 session_start();
 
 if (isset($_POST['submit'])) {
-  echo isset($_FILES['img_file2']);
-  echo "Hello";
+  $img1 = $_FILES['img_file1'];
+  $img2 = $_FILES['img_file2'];
 
-  // $img = $_FILES['img_file2'];
+  $allow = array('jpg', 'jpeg', 'png');
+  $extension1 = explode('.', $img1['name']);
+  $extension2 = explode('.', $img2['name']);
 
-  // $img_file = (isset($_POST['img_file']) ? $_POST['img_file'] : '');
-  // $img = $_FILES['img_file']['name'];
+  $fileActExt1 = strtolower(end($extension1));
+  $fileActExt2 = strtolower(end($extension2));
 
-  // $allow = array('jpg', 'jpeg', 'png');
-  // $extension = explode('.', $img['name']);
-  // $fileActExt = strtolower(end($extension));
-  // $fileNew = rand() . "." . $fileActExt;
-  // $filePath = 'uploads/' . $fileNew;
+  $fileNew1 = rand() . "." . $fileActExt1;
+  $fileNew2 = rand() . "." . $fileActExt2;
 
-  // if (in_array($fileActExt, $allow)) {
-  //   if ($img['size'] > 0 && $img['error'] == 0) {
-  //     if (move_uploaded_file($img['tmp_name'], $filePath)) {
-  //       echo "Complete";
-  //     }
-  //   }
-  // }
+  $filePath1 = 'uploads/' . $fileNew1;
+  $filePath2 = 'uploads/' . $fileNew2;
+
+  if ((in_array($fileActExt1, $allow) && (in_array($fileActExt2, $allow)))) {
+    if (($img1['size'] > 0 && $img1['error'] == 0) && ($img2['size'] > 0 && $img2['error'] == 0)) {
+      if ((move_uploaded_file($img1['tmp_name'], $filePath1)) && (move_uploaded_file($img2['tmp_name'], $filePath2))) {
+        echo "Complete";
+      }
+    }
+  }
 }
 
 
@@ -42,13 +44,12 @@ if (isset($_POST['submit'])) {
 
 <body>
   <div class="container mt-5" style="max-width: 960px;">
-    <form action="" method="post" class="needs-validation" novalidate>
+    <form action="" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
 
       <font color="red">*อัพโหลดได้เฉพาะ .jpeg , .jpg , .png </font>
 
-      <input type="file" class="form-control" name="img_file" accept="image/*" required><br>
-
-      <input type="file" name="img_file2" class="form-control">
+      <input type="file" class="form-control" name="img_file1" accept="image/jpeg, image/png, image/jpg" required><br>
+      <input type="file" class="form-control" name="img_file2" accept="image/jpeg, image/png, image/jpg" required><br>
 
       <button class="btn btn-primary" name="submit" type="submit">Submit</button>
     </form>
