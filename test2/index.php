@@ -57,11 +57,14 @@
             <form action="" method="post" class="needs-validation" novalidate>
               <div class="tab-content pt-2" id="myTabjustifiedContent">
                 <!-- Page 1 -->
-                <?php // include_once('component/page1.html'); ?>
+                <?php include_once('component/page1.html'); ?>
 
                 <!-- Page 2 -->
-                <?php include_once('component/page2.html'); ?>
-                <?php include_once('component/page3.html'); ?>
+                <?php //include_once('component/page2.html'); 
+                ?>
+
+                <!-- Page 3 -->
+                <?php // include_once('component/page3.html'); ?>
 
                 <button type="submit" name="submit" class="btn btn-success w-100">Submit</button>
 
@@ -78,9 +81,9 @@
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
     <div class="copyright">
-      &copy; Copyright <strong><span>ลงชื่อ</span></strong>. All Rights Reserved
+      &copy; Copyright <strong><span>Thanaphong Songsisai</span></strong>. All Rights Reserved
     </div>
-    <div class="credits">Designed by <a href="https://www.facebook.com/Frankie651">Frankie</a></div>
+    <div class="credits">Designed by <a href="https://getlinks.com/p/9sep?fbclid=IwAR3fb972dHqISVes5p5a5MdYuudvISWeoAwfi3mjOKv75HHn1j9mhtg9Egg">9sep</a></div>
   </footer>
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
@@ -185,9 +188,6 @@
     }
   </script>
 
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-
   <script>
     // Example starter JavaScript for disabling form submissions if there are invalid fields
     (() => {
@@ -201,36 +201,6 @@
         form.addEventListener(
           "submit",
           (event) => {
-            var failed = false;
-
-            if ($("[name='ohe_checkbox1']:checked").length == 0) {
-              $("[name='ohe_checkbox1']").attr("required", true);
-              failed = true;
-            } else {
-              $("[name='ohe_checkbox1']").attr("required", false);
-            }
-
-            if ($("[name='ohe_checkbox2']:checked").length == 0) {
-              $("[name='ohe_checkbox2']").attr("required", true);
-              failed = true;
-            } else {
-              $("[name='ohe_checkbox2']").attr("required", false);
-            }
-
-            if ($("[name='ohe_checkbox3']:checked").length == 0) {
-              $("[name='ohe_checkbox3']").attr("required", true);
-              failed = true;
-            } else {
-              $("[name='ohe_checkbox3']").attr("required", false);
-            }
-
-            if ($("[name='ohe_checkbox4']:checked").length == 0) {
-              $("[name='ohe_checkbox4']").attr("required", true);
-              failed = true;
-            } else {
-              $("[name='ohe_checkbox4']").attr("required", false);
-            }
-
             if (!form.checkValidity()) {
               event.preventDefault();
               event.stopPropagation();

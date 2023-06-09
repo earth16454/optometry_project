@@ -84,7 +84,7 @@ if (isset($_REQUEST['submit'])) {
   $pr_radio = $_REQUEST['pr_radio'];
   $pr_other = $_REQUEST['pr_other'];
 
-  
+
   // Page 2
 
   // Table 10 old_Rx
@@ -106,7 +106,7 @@ if (isset($_REQUEST['submit'])) {
   $old_VAsc_near_ou = $_REQUEST['vasc_near_ou'];
   $old_VAsc_phinhole_od = $_REQUEST['vasc_phinhole_od'];
   $old_VAsc_phinhole_os = $_REQUEST['vasc_phinhole_os'];
-  
+
   $old_VAcc_distance_od = $_REQUEST['vacc_distance_od'];
   $old_VAcc_distance_os = $_REQUEST['vacc_distance_os'];
   $old_VAcc_distance_ou = $_REQUEST['vacc_distance_ou'];
@@ -175,7 +175,7 @@ if (isset($_REQUEST['submit'])) {
   $bv_distance_vertical = $_REQUEST['bv_distance_vertical'];
   $bv_distance_supra = $_REQUEST['bv_distance_supra1'] . " / " . $_REQUEST['bv_distance_supra2'];
   $bv_distance_infra = $_REQUEST['bv_distance_infra1'] . " / " . $_REQUEST['bv_distance_infra2'];
-  
+
   $bv_near_radio = $_REQUEST['bv_near_radio'];
   $bv_near_h = $_REQUEST['bv_near_h'];
   $bv_near_bi = $_REQUEST['bv_near_bi1'] . " / " . $_REQUEST['bv_near_bi2'] . " / " . $_REQUEST['bv_near_bi3'];
@@ -183,7 +183,7 @@ if (isset($_REQUEST['submit'])) {
   $bv_near_vertical = $_REQUEST['bv_near_vertical'];
   $bv_near_supra = $_REQUEST['bv_near_supra1'] . " / " . $_REQUEST['bv_near_supra2'];
   $bv_near_infra = $_REQUEST['bv_near_infra1'] . " / " . $_REQUEST['bv_near_infra2'];
-  
+
   $bv_cal_radio = $_REQUEST['bv_cal_radio'];
   $bv_cal_nra = $_REQUEST['bv_cal_nra'];
   $bv_cal_pra = $_REQUEST['bv_cal_pra'];
@@ -302,31 +302,31 @@ if (isset($_REQUEST['submit'])) {
   $pc_checkbox_detail5 = Null;
   $pc_checkbox_detail6 = Null;
   $pc_checkbox_detail7 = Null;
-  if(isset($_REQUEST['pc_checkbox1'])){
-  $pc_checkbox1 = $_REQUEST['pc_checkbox1'];
-  $pc_checkbox_detail1 = $_REQUEST['pc_checkbox_detail1'];
+  if (isset($_REQUEST['pc_checkbox1'])) {
+    $pc_checkbox1 = $_REQUEST['pc_checkbox1'];
+    $pc_checkbox_detail1 = $_REQUEST['pc_checkbox_detail1'];
   }
-  if(isset($_REQUEST['pc_checkbox2'])){
+  if (isset($_REQUEST['pc_checkbox2'])) {
     $pc_checkbox1 = $_REQUEST['pc_checkbox2'];
     $pc_checkbox_detail1 = $_REQUEST['pc_checkbox_detail2'];
   }
-  if(isset($_REQUEST['pc_checkbox3'])){
+  if (isset($_REQUEST['pc_checkbox3'])) {
     $pc_checkbox1 = $_REQUEST['pc_checkbox3'];
     $pc_checkbox_detail1 = $_REQUEST['pc_checkbox_detail3'];
   }
-  if(isset($_REQUEST['pc_checkbox4'])){
+  if (isset($_REQUEST['pc_checkbox4'])) {
     $pc_checkbox1 = $_REQUEST['pc_checkbox4'];
     $pc_checkbox_detail1 = $_REQUEST['pc_checkbox_detail4'];
   }
-  if(isset($_REQUEST['pc_checkbox5'])){
+  if (isset($_REQUEST['pc_checkbox5'])) {
     $pc_checkbox1 = $_REQUEST['pc_checkbox5'];
     $pc_checkbox_detail1 = $_REQUEST['pc_checkbox_detail5'];
   }
-  if(isset($_REQUEST['pc_checkbox6'])){
+  if (isset($_REQUEST['pc_checkbox6'])) {
     $pc_checkbox1 = $_REQUEST['pc_checkbox6'];
     $pc_checkbox_detail1 = $_REQUEST['pc_checkbox_detail6'];
   }
-  if(isset($_REQUEST['pc_checkbox7'])){
+  if (isset($_REQUEST['pc_checkbox7'])) {
     $pc_checkbox1 = $_REQUEST['pc_checkbox7'];
     $pc_checkbox_detail1 = $_REQUEST['pc_checkbox_detail7'];
   }
@@ -334,8 +334,13 @@ if (isset($_REQUEST['submit'])) {
 
 
   try {
-
-    $insert_stmt1 = $db->prepare("INSERT INTO personal_information(pi_firstname, pi_lastname, pi_birthdate, pi_gender, pi_address, pi_tel, pi_occupation) VALUES(:pi_firstname, :pi_lastname, :pi_birthdate, :pi_gender, :pi_address, :pi_tel, :pi_occupation)");
+    $sql1 = "INSERT INTO personal_information(
+      pi_firstname, pi_lastname, pi_birthdate, pi_gender, pi_address, pi_tel, pi_occupation) 
+      VALUES(
+        :pi_firstname, :pi_lastname, :pi_birthdate, :pi_gender, :pi_address, :pi_tel, :pi_occupation
+      )
+    ";
+    $insert_stmt1 = $db->prepare($sql1);
     $insert_stmt1->bindParam(":pi_firstname", $pi_firstname);
     $insert_stmt1->bindParam(":pi_lastname", $pi_lastname);
     $insert_stmt1->bindParam(":pi_birthdate", $pi_birthdate);
@@ -347,13 +352,24 @@ if (isset($_REQUEST['submit'])) {
 
     $pi_id = $db->lastInsertId();
 
-    $insert_stmt2 = $db->prepare("INSERT INTO chief_complaint(cc_text, cc_symptoms, pi_id) VALUES(:cc_text, :cc_symptoms, :pi_id)");
+
+    $sql2 = "INSERT INTO chief_complaint(cc_text, cc_symptoms, pi_id) VALUES(:cc_text, :cc_symptoms, :pi_id)";
+    $insert_stmt2 = $db->prepare($sql2);
     $insert_stmt2->bindParam(":cc_text", $cc_text);
     $insert_stmt2->bindParam(":cc_symptoms", $cc_symptoms);
     $insert_stmt2->bindParam(":pi_id", $pi_id);
     $result2 = $insert_stmt2->execute();
 
-    $insert_stmt3 = $db->prepare("INSERT INTO pohx(POHx_checked, POHx_reason, POHx_inspector, POHx_site, POHx_mydriatic, POHx_results, POHx_edited, POHx_radio, POHx_radio_detail, pi_id) VALUES(:POHx_checked, :POHx_reason, :POHx_inspector, :POHx_site, :POHx_mydriatic, :POHx_results, :POHx_edited, :POHx_radio, :POHx_radio_detail, :pi_id)");
+
+    $sql3 = "INSERT INTO pohx(
+      POHx_checked, POHx_reason, POHx_inspector, POHx_site, POHx_mydriatic, 
+      POHx_results, POHx_edited, POHx_radio, POHx_radio_detail, pi_id) 
+      VALUES(
+        :POHx_checked, :POHx_reason, :POHx_inspector, :POHx_site, :POHx_mydriatic, 
+        :POHx_results, :POHx_edited, :POHx_radio, :POHx_radio_detail, :pi_id
+      )
+    ";
+    $insert_stmt3 = $db->prepare($sql3);
     $insert_stmt3->bindParam(":POHx_checked", $POHx_checked);
     $insert_stmt3->bindParam(":POHx_reason", $POHx_reason);
     $insert_stmt3->bindParam(":POHx_inspector", $POHx_inspector);
@@ -366,13 +382,25 @@ if (isset($_REQUEST['submit'])) {
     $insert_stmt3->bindParam(":pi_id", $pi_id);
     $result3 = $insert_stmt3->execute();
 
-    $insert_stmt4 = $db->prepare("INSERT INTO ha_hx(ha_radio, ha_radio_detail, pi_id) VALUES(:ha_radio, :ha_radio_detail, :pi_id)");
+
+    $sql4 = "INSERT INTO ha_hx(ha_radio, ha_radio_detail, pi_id) VALUES(:ha_radio, :ha_radio_detail, :pi_id)";
+    $insert_stmt4 = $db->prepare($sql4);
     $insert_stmt4->bindParam(":ha_radio", $ha_radio);
     $insert_stmt4->bindParam(":ha_radio_detail", $ha_radio_detail);
     $insert_stmt4->bindParam(":pi_id", $pi_id);
     $result4 = $insert_stmt4->execute();
 
-    $insert_stmt5 = $db->prepare("INSERT INTO pmhx(PMHx_checked, PMHx_reason, PMHx_inspector, PMHx_site, PMHx_results, PMHx_pressure, PMHx_sugar, PMHx_disease, pi_id) VALUES(:PMHx_checked, :PMHx_reason, :PMHx_inspector, :PMHx_site, :PMHx_results, :PMHx_pressure, :PMHx_sugar, :PMHx_disease, :pi_id)");
+
+    $sql5 = "INSERT INTO pmhx(
+      PMHx_checked, PMHx_reason, PMHx_inspector, PMHx_site, 
+      PMHx_results, PMHx_pressure, PMHx_sugar, PMHx_disease, pi_id
+      ) 
+      VALUES(
+        :PMHx_checked, :PMHx_reason, :PMHx_inspector, :PMHx_site, 
+        :PMHx_results, :PMHx_pressure, :PMHx_sugar, :PMHx_disease, :pi_id
+      )
+    ";
+    $insert_stmt5 = $db->prepare($sql5);
     $insert_stmt5->bindParam(":PMHx_checked", $PMHx_checked);
     $insert_stmt5->bindParam(":PMHx_reason", $PMHx_reason);
     $insert_stmt5->bindParam(":PMHx_inspector", $PMHx_inspector);
@@ -384,19 +412,39 @@ if (isset($_REQUEST['submit'])) {
     $insert_stmt5->bindParam(":pi_id", $pi_id);
     $result5 = $insert_stmt5->execute();
 
-    $insert_stmt6 = $db->prepare("INSERT INTO medication(med_radio, med_radio_detail, med_KKK, pi_id) VALUES(:med_radio, :med_radio_detail, :med_KKK, :pi_id)");
+
+    $sql6 = "INSERT INTO medication(
+      med_radio, med_radio_detail, med_KKK, pi_id) 
+      VALUES(
+      :med_radio, :med_radio_detail, :med_KKK, :pi_id)
+    ";
+    $insert_stmt6 = $db->prepare($sql6);
     $insert_stmt6->bindParam(":med_radio", $med_radio);
     $insert_stmt6->bindParam(":med_radio_detail", $med_radio_detail);
     $insert_stmt6->bindParam(":med_KKK", $med_KKK);
     $insert_stmt6->bindParam(":pi_id", $pi_id);
     $result6 = $insert_stmt6->execute();
 
-    $insert_stmt7 = $db->prepare("INSERT INTO fmhx(FmHx_text, pi_id) VALUES(:FmHx_text, :pi_id)");
+
+    $sql7 = "INSERT INTO fmhx(FmHx_text, pi_id) VALUES(:FmHx_text, :pi_id)";
+    $insert_stmt7 = $db->prepare($sql7);
     $insert_stmt7->bindParam(":FmHx_text", $FmHx_text);
     $insert_stmt7->bindParam(":pi_id", $pi_id);
     $result7 = $insert_stmt7->execute();
 
-    $insert_stmt8 = $db->prepare("INSERT INTO ohe(ohe_work, ohe_hobby, ohe_checkbox1, ohe_checkbox_detail1, ohe_checkbox2, ohe_checkbox_detail2, ohe_checkbox3, ohe_checkbox_detail3, ohe_checkbox4, ohe_checkbox_detail4, pi_id) VALUES(:ohe_work, :ohe_hobby, :ohe_checkbox1, :ohe_checkbox_detail1, :ohe_checkbox2, :ohe_checkbox_detail2, :ohe_checkbox3, :ohe_checkbox_detail3, :ohe_checkbox4, :ohe_checkbox_detail4, :pi_id)");
+
+    $sql8 = "INSERT INTO ohe(
+      ohe_work, ohe_hobby, ohe_checkbox1, ohe_checkbox_detail1, 
+      ohe_checkbox2, ohe_checkbox_detail2, ohe_checkbox3, ohe_checkbox_detail3, 
+      ohe_checkbox4, ohe_checkbox_detail4, pi_id
+    ) 
+    VALUES(
+      :ohe_work, :ohe_hobby, :ohe_checkbox1, :ohe_checkbox_detail1, 
+      :ohe_checkbox2, :ohe_checkbox_detail2, :ohe_checkbox3, :ohe_checkbox_detail3, 
+      :ohe_checkbox4, :ohe_checkbox_detail4, :pi_id
+      )
+    ";
+    $insert_stmt8 = $db->prepare($sql8);
     $insert_stmt8->bindParam(":ohe_work", $ohe_work);
     $insert_stmt8->bindParam(":ohe_hobby", $ohe_hobby);
     $insert_stmt8->bindParam(":ohe_checkbox1", $ohe_checkbox1);
@@ -410,13 +458,32 @@ if (isset($_REQUEST['submit'])) {
     $insert_stmt8->bindParam(":pi_id", $pi_id);
     $result8 = $insert_stmt8->execute();
 
-    $insert_stmt9 = $db->prepare("INSERT INTO patient_response(pr_radio, pr_other, pi_id) VALUES(:pr_radio, :pr_other, :pi_id)");
+
+    $sql9 = "INSERT INTO patient_response(pr_radio, pr_other, pi_id) VALUES(:pr_radio, :pr_other, :pi_id)";
+    $insert_stmt9 = $db->prepare($sql9);
     $insert_stmt9->bindParam(":pr_radio", $pr_radio);
     $insert_stmt9->bindParam(":pr_other", $pr_other);
     $insert_stmt9->bindParam(":pi_id", $pi_id);
     $result9 = $insert_stmt9->execute();
 
-    $insert_stmt10 = $db->prepare("INSERT INTO old_Rx(old_Rx, old_Rx1_od, old_Rx1_os, old_Rx1_add, old_Rx1_pd, old_Rx2_od, old_Rx2_os, old_Rx2_add, old_Rx2_pd, old_VAsc_distance_od, old_VAsc_distance_os, old_VAsc_distance_ou, old_VAsc_pinhole_od, old_VAsc_pinhole_os, old_VAsc_near_od, old_VAsc_near_os, old_VAsc_near_ou, old_VAcc_distance_od, old_VAcc_distance_os, old_VAcc_distance_ou, old_VAcc_pinhole_od, old_VAcc_pinhole_os, old_VAcc_near_od, old_VAcc_near_os, old_VAcc_near_ou, pi_id) VALUES(:old_Rx, :old_Rx1_od, :old_Rx1_os, :old_Rx1_add, :old_Rx1_pd, :old_Rx2_od, :old_Rx2_os, :old_Rx2_add, :old_Rx2_pd, :old_VAsc_distance_od, :old_VAsc_distance_os, :old_VAsc_distance_ou, :old_VAsc_pinhole_od, :old_VAsc_pinhole_os, :old_VAsc_near_od, :old_VAsc_near_os, :old_VAsc_near_ou, :old_VAcc_distance_od, :old_VAcc_distance_os, :old_VAcc_distance_ou, :old_VAcc_pinhole_od, :old_VAcc_pinhole_os, :old_VAcc_near_od, :old_VAcc_near_os, :old_VAcc_near_ou, :pi_id)");
+    $sql10 = "INSERT INTO old_Rx(
+      old_Rx, old_Rx1_od, old_Rx1_os, old_Rx1_add, old_Rx1_pd, old_Rx2_od, 
+      old_Rx2_os, old_Rx2_add, old_Rx2_pd, old_VAsc_distance_od, old_VAsc_distance_os, 
+      old_VAsc_distance_ou, old_VAsc_pinhole_od, old_VAsc_pinhole_os, old_VAsc_near_od, 
+      old_VAsc_near_os, old_VAsc_near_ou, old_VAcc_distance_od, old_VAcc_distance_os, 
+      old_VAcc_distance_ou, old_VAcc_pinhole_od, old_VAcc_pinhole_os, old_VAcc_near_od, 
+      old_VAcc_near_os, old_VAcc_near_ou, pi_id
+      ) 
+      VALUES(
+      :old_Rx, :old_Rx1_od, :old_Rx1_os, :old_Rx1_add, :old_Rx1_pd, :old_Rx2_od, 
+      :old_Rx2_os, :old_Rx2_add, :old_Rx2_pd, :old_VAsc_distance_od, :old_VAsc_distance_os, 
+      :old_VAsc_distance_ou, :old_VAsc_pinhole_od, :old_VAsc_pinhole_os, :old_VAsc_near_od, 
+      :old_VAsc_near_os, :old_VAsc_near_ou, :old_VAcc_distance_od, :old_VAcc_distance_os, 
+      :old_VAcc_distance_ou, :old_VAcc_pinhole_od, :old_VAcc_pinhole_os, :old_VAcc_near_od, 
+      :old_VAcc_near_os, :old_VAcc_near_ou, :pi_id
+      )
+    ";
+    $insert_stmt10 = $db->prepare($sql10);
     $insert_stmt10->bindParam(":old_Rx", $old_Rx);
     $insert_stmt10->bindParam(":old_Rx1_od", $old_Rx1_od);
     $insert_stmt10->bindParam(":old_Rx1_os", $old_Rx1_os);
@@ -446,8 +513,20 @@ if (isset($_REQUEST['submit'])) {
     $result10 = $insert_stmt10->execute();
 
 
-
-    $insert_stmt11 = $db->prepare("INSERT INTO preliminary_exam(pe_distance, pe_near, pe_npa_od, pe_npa_os, pe_aa_od, pe_aa_os, pe_npc, pe_motility, pe_con, pe_cover_distance, pe_cover_near, pe_cover_dots, pe_so_near, pe_so_type, pe_color_od, pe_color_os, pe_color_type, pe_grid, pe_grid_od, pe_grid_os, pe_grid_time, pi_id) VALUES(pe_distance, pe_near, pe_npa_od, pe_npa_os, pe_aa_od, pe_aa_os, pe_npc, pe_motility, pe_con, pe_cover_distance, pe_cover_near, pe_cover_dots, pe_so_near, pe_so_type, pe_color_od, pe_color_os, pe_color_type, pe_grid, pe_grid_od, pe_grid_os, pe_grid_time, pi_id)");
+    $sql11 = "INSERT INTO preliminary_exam(
+      pe_distance, pe_near, pe_npa_od, pe_npa_os, pe_aa_od, pe_aa_os, pe_npc, 
+      pe_motility, pe_con, pe_cover_distance, pe_cover_near, pe_cover_dots, 
+      pe_so_near, pe_so_type, pe_color_od, pe_color_os, pe_color_type, pe_grid, 
+      pe_grid_od, pe_grid_os, pe_grid_time, pi_id
+      ) 
+      VALUES(
+      :pe_distance, :pe_near, :pe_npa_od, :pe_npa_os, :pe_aa_od, :pe_aa_os, :pe_npc, 
+      :pe_motility, :pe_con, :pe_cover_distance, :pe_cover_near, :pe_cover_dots, 
+      :pe_so_near, :pe_so_type, :pe_color_od, :pe_color_os, :pe_color_type, 
+      :pe_grid, :pe_grid_od, :pe_grid_os, :pe_grid_time, :pi_id
+      )
+    ";
+    $insert_stmt11 = $db->prepare($sql11);
     $insert_stmt11->bindParam(":pe_distance", $pe_distance);
     $insert_stmt11->bindParam(":pe_near", $pe_near);
     $insert_stmt11->bindParam(":pe_npa_od", $pe_npa_od);
@@ -473,7 +552,17 @@ if (isset($_REQUEST['submit'])) {
     $result11 = $insert_stmt11->execute();
 
 
-    $insert_stmt12 = $db->prepare("INSERT INTO refraction(ref_km_od, ref_km_os, ref_sr_od, ref_sr_od_va, ref_sr_os, ref_sr_os_va, ref_sr_ou_va, ref_dr_od, ref_dr_od_va, ref_dr_os, ref_dr_os_va, ref_dr_ou_va, ref_ms_od, ref_ms_od_va, ref_ms_os, ref_ms_os_va, ref_ms_ou_va, ref_bs_od, ref_bs_os, ref_bs_ou_va, pi_id) VALUES(ref_km_od, ref_km_os, ref_sr_od, ref_sr_od_va, ref_sr_os, ref_sr_os_va, ref_sr_ou_va, ref_dr_od, ref_dr_od_va, ref_dr_os, ref_dr_os_va, ref_dr_ou_va, ref_ms_od, ref_ms_od_va, ref_ms_os, ref_ms_os_va, ref_ms_ou_va, ref_bs_od, ref_bs_os, ref_bs_ou_va, pi_id)");
+    $sql12 = "INSERT INTO refraction(
+      ref_km_od, ref_km_os, ref_sr_od, ref_sr_od_va, ref_sr_os, ref_sr_os_va, ref_sr_ou_va, 
+      ref_dr_od, ref_dr_od_va, ref_dr_os, ref_dr_os_va, ref_dr_ou_va, ref_ms_od, ref_ms_od_va, 
+      ref_ms_os, ref_ms_os_va, ref_ms_ou_va, ref_bs_od, ref_bs_os, ref_bs_ou_va, pi_id
+    ) 
+    VALUES(
+      :ref_km_od, :ref_km_os, :ref_sr_od, :ref_sr_od_va, :ref_sr_os, :ref_sr_os_va, :ref_sr_ou_va, 
+      :ref_dr_od, :ref_dr_od_va, :ref_dr_os, :ref_dr_os_va, :ref_dr_ou_va, :ref_ms_od, :ref_ms_od_va, 
+      :ref_ms_os, :ref_ms_os_va, :ref_ms_ou_va, :ref_bs_od, :ref_bs_os, :ref_bs_ou_va, :pi_id
+    )";
+    $insert_stmt12 = $db->prepare($sql12);
     $insert_stmt12->bindParam(":ref_km_od", $ref_km_od);
     $insert_stmt12->bindParam(":ref_km_os", $ref_km_os);
     $insert_stmt12->bindParam(":ref_sr_od", $ref_sr_od);
@@ -547,19 +636,155 @@ if (isset($_REQUEST['submit'])) {
     $insert_stmt13->bindParam(":pi_id", $pi_id);
     $result13 = $insert_stmt13->execute();
 
-    $insert_stmt14 = $db->prepare("INSERT INTO additional_test(at_text, pi_id) VALUES(:at_text, :pi_id)");
+
+    $sql14 = "INSERT INTO additional_test(at_text, pi_id) VALUES(:at_text, :pi_id)";
+    $insert_stmt14 = $db->prepare($sql14);
     $insert_stmt14->bindParam(":at_text", $at_text);
     $insert_stmt14->bindParam(":pi_id", $pi_id);
     $result14 = $insert_stmt14->execute();
 
 
-    $insert_stmt15 = $db->prepare("INSERT INTO slit_lamp() VALUES()");
+    $sql15 = "INSERT INTO slit_lamp(
+      as_lid_od, as_lid_os, as_conjunctiva_od, as_conjunctiva_os, as_sclera_od, as_sclera_os,
+      as_cornea_od, as_cornea_os, as_tear, as_tear_od, as_tear_os, as_iris_od, as_iris_os,
+      as_lens_od, as_lens_os, as_anterior_od, as_anterior_os, as_p_size_l_od, as_p_size_l_os,
+      as_p_size_d_od, as_p_size_d_os, as_p_direct_od, as_p_direct_os, as_p_consensual_od,
+      as_p_consensual_os, as_p_accommodate_od, as_p_accommodate_os, as_p_marcus_od, as_p_marcus_os,
+      as_img, as_assessment, ps_radio, ps_media_od, ps_media_os, ps_vitreous_od, ps_vitreous_os,
+      ps_cd_od, ps_cd_os, ps_disc_od, ps_disc_os, ps_avratio_od, ps_avratio_os, ps_avcrossing_od,
+      ps_avcrossing_os, ps_macular_od, ps_macular_os, ps_fovea_od, ps_fovea_os, ps_bg_od, ps_bg_os,
+      ps_periphery_od, ps_periphery_os, ps_img, ps_treatment, ps_next, ps_examinedby, pi_id
+    ) VALUES(
+      :as_lid_od, :as_lid_os, :as_conjunctiva_od, :as_conjunctiva_os, :as_sclera_od, :as_sclera_os,
+      :as_cornea_od, :as_cornea_os, :as_tear, :as_tear_od, :as_tear_os, :as_iris_od, :as_iris_os,
+      :as_lens_od, :as_lens_os, :as_anterior_od, :as_anterior_os, :as_p_size_l_od, :as_p_size_l_os,
+      :as_p_size_d_od, :as_p_size_d_os, :as_p_direct_od, :as_p_direct_os, :as_p_consensual_od,
+      :as_p_consensual_os, :as_p_accommodate_od, :as_p_accommodate_os, :as_p_marcus_od, :as_p_marcus_os,
+      :as_img, :as_assessment, :ps_radio, :ps_media_od, :ps_media_os, :ps_vitreous_od, :ps_vitreous_os,
+      :ps_cd_od, :ps_cd_os, :ps_disc_od, :ps_disc_os, :ps_avratio_od, :ps_avratio_os, :ps_avcrossing_od,
+      :ps_avcrossing_os, :ps_macular_od, :ps_macular_os, :ps_fovea_od, :ps_fovea_os, :ps_bg_od, :ps_bg_os,
+      :ps_periphery_od, :ps_periphery_os, :ps_img, :ps_treatment, :ps_next, :ps_examinedby, :pi_id
+    )";
+    $insert_stmt15 = $db->prepare($sql15);
+    $insert_stmt15->bindParam(":as_lid_od", $as_lid_od);
+    $insert_stmt15->bindParam(":as_lid_os", $as_lid_os);
+    $insert_stmt15->bindParam(":as_conjunctiva_od", $as_conjunctiva_od);
+    $insert_stmt15->bindParam(":as_conjunctiva_os", $as_conjunctiva_os);
+    $insert_stmt15->bindParam(":as_sclera_od", $as_sclera_od);
+    $insert_stmt15->bindParam(":as_sclera_os", $as_sclera_os);
+    $insert_stmt15->bindParam(":as_cornea_od", $as_cornea_od);
+    $insert_stmt15->bindParam(":as_cornea_os", $as_cornea_os);
+    $insert_stmt15->bindParam(":as_tear", $as_tear);
+    $insert_stmt15->bindParam(":as_tear_od", $as_tear_od);
+    $insert_stmt15->bindParam(":as_tear_os", $as_tear_os);
+    $insert_stmt15->bindParam(":as_iris_od", $as_iris_od);
+    $insert_stmt15->bindParam(":as_iris_os", $as_iris_os);
+    $insert_stmt15->bindParam(":as_lens_od", $as_lens_od);
+    $insert_stmt15->bindParam(":as_lens_os", $as_lens_os);
+    $insert_stmt15->bindParam(":as_anterior_od", $as_anterior_od);
+    $insert_stmt15->bindParam(":as_anterior_os", $as_anterior_os);
+    $insert_stmt15->bindParam(":as_p_size_l_od", $as_p_size_l_od);
+    $insert_stmt15->bindParam(":as_p_size_l_os", $as_p_size_l_os);
+    $insert_stmt15->bindParam(":as_p_size_d_od", $as_p_size_d_od);
+    $insert_stmt15->bindParam(":as_p_size_d_os", $as_p_size_d_os);
+    $insert_stmt15->bindParam(":as_p_direct_od", $as_p_direct_od);
+    $insert_stmt15->bindParam(":as_p_direct_os", $as_p_direct_os);
+    $insert_stmt15->bindParam(":as_p_consensual_od", $as_p_consensual_od);
+    $insert_stmt15->bindParam(":as_p_consensual_os", $as_p_consensual_os);
+    $insert_stmt15->bindParam(":as_p_accommodate_od", $as_p_accommodate_od);
+    $insert_stmt15->bindParam(":as_p_accommodate_os", $as_p_accommodate_os);
+    $insert_stmt15->bindParam(":as_p_marcus_od", $as_p_marcus_od);
+    $insert_stmt15->bindParam(":as_p_marcus_os", $as_p_marcus_os);
+    $insert_stmt15->bindParam(":as_img", $as_img);
+    $insert_stmt15->bindParam(":as_assessment", $as_assessment);
 
+    $insert_stmt15->bindParam(":ps_radio", $ps_radio);
+    $insert_stmt15->bindParam(":ps_media_od", $ps_media_od);
+    $insert_stmt15->bindParam(":ps_media_os", $ps_media_os);
+    $insert_stmt15->bindParam(":ps_vitreous_od", $ps_vitreous_od);
+    $insert_stmt15->bindParam(":ps_vitreous_os", $ps_vitreous_os);
+    $insert_stmt15->bindParam(":ps_cd_od", $ps_cd_od);
+    $insert_stmt15->bindParam(":ps_cd_os", $ps_cd_os);
+    $insert_stmt15->bindParam(":ps_disc_od", $ps_disc_od);
+    $insert_stmt15->bindParam(":ps_disc_os", $ps_disc_os);
+    $insert_stmt15->bindParam(":ps_avratio_od", $ps_avratio_od);
+    $insert_stmt15->bindParam(":ps_avratio_os", $ps_avratio_os);
+    $insert_stmt15->bindParam(":ps_avcrossing_od", $ps_avcrossing_od);
+    $insert_stmt15->bindParam(":ps_avcrossing_os", $ps_avcrossing_os);
+    $insert_stmt15->bindParam(":ps_macular_od", $ps_macular_od);
+    $insert_stmt15->bindParam(":ps_macular_os", $ps_macular_os);
+    $insert_stmt15->bindParam(":ps_fovea_od", $ps_fovea_od);
+    $insert_stmt15->bindParam(":ps_fovea_os", $ps_fovea_os);
+    $insert_stmt15->bindParam(":ps_bg_od", $ps_bg_od);
+    $insert_stmt15->bindParam(":ps_bg_os", $ps_bg_os);
+    $insert_stmt15->bindParam(":ps_periphery_od", $ps_periphery_od);
+    $insert_stmt15->bindParam(":ps_periphery_os", $ps_periphery_os);
+    $insert_stmt15->bindParam(":ps_img", $ps_img);
+    $insert_stmt15->bindParam(":ps_treatment", $ps_treatment);
+    $insert_stmt15->bindParam(":ps_next", $ps_next);
+    $insert_stmt15->bindParam(":ps_examinedby", $ps_examinedby);
+    $insert_stmt15->bindParam(":pi_id", $pi_id);
+    $result15 = $insert_stmt15->execute();
 
+    
+    $sql16 = "INSERT INTO prescription(
+      pc_name, pc_age, pc_date, pc_sphere_od, pc_sphere_os, pc_cylinder_od, pc_cylinder_os,
+      pc_axis_od, pc_axis_os, pc_add_od, pc_add_os, pc_prism_od, pc_prism_os, pc_va_od, pc_va_os,
+      pc_pd_od, pc_pd_os, pc_fitting_od, pc_fitting_os, 
+      pc_checkbox1, pc_checkbox_detail1, pc_checkbox2, pc_checkbox_detail2, 
+      pc_checkbox3, pc_checkbox_detail3, pc_checkbox4, pc_checkbox_detail4, 
+      pc_checkbox5, pc_checkbox_detail5, pc_checkbox6, pc_checkbox_detail6,
+      pc_checkbox7, pc_checkbox_detail7, pc_note, pi_id
+    ) VALUES(
+      :pc_name, :pc_age, :pc_date, :pc_sphere_od, :pc_sphere_os, :pc_cylinder_od, :pc_cylinder_os,
+      :pc_axis_od, :pc_axis_os, :pc_add_od, :pc_add_os, :pc_prism_od, :pc_prism_os, :pc_va_od, :pc_va_os,
+      :pc_pd_od, :pc_pd_os, :pc_fitting_od, :pc_fitting_os,
+      :pc_checkbox1, :pc_checkbox_detail1, :pc_checkbox2, :pc_checkbox_detail2, 
+      :pc_checkbox3, :pc_checkbox_detail3, :pc_checkbox4, :pc_checkbox_detail4, 
+      :pc_checkbox5, :pc_checkbox_detail5, :pc_checkbox6, :pc_checkbox_detail6,
+      :pc_checkbox7, :pc_checkbox_detail7, :pc_note, :pi_id
+    )";
+    $insert_stmt16 = $db->prepare($sql16);
+    $insert_stmt16->bindParam(":pc_name", $pc_name);
+    $insert_stmt16->bindParam(":pc_age", $pc_age);
+    $insert_stmt16->bindParam(":pc_date", $pc_date);
+    $insert_stmt16->bindParam(":pc_sphere_od", $pc_sphere_od);
+    $insert_stmt16->bindParam(":pc_sphere_os", $pc_sphere_os);
+    $insert_stmt16->bindParam(":pc_cylinder_od", $pc_cylinder_od);
+    $insert_stmt16->bindParam(":pc_cylinder_os", $pc_cylinder_os);
+    $insert_stmt16->bindParam(":pc_axis_od", $pc_axis_od);
+    $insert_stmt16->bindParam(":pc_axis_os", $pc_axis_os);
+    $insert_stmt16->bindParam(":pc_add_od", $pc_add_od);
+    $insert_stmt16->bindParam(":pc_add_os", $pc_add_os);
+    $insert_stmt16->bindParam(":pc_prism_od", $pc_prism_od);
+    $insert_stmt16->bindParam(":pc_prism_os", $pc_prism_os);
+    $insert_stmt16->bindParam(":pc_va_od", $pc_va_od);
+    $insert_stmt16->bindParam(":pc_va_os", $pc_va_os);
+    $insert_stmt16->bindParam(":pc_pd_od", $pc_pd_od);
+    $insert_stmt16->bindParam(":pc_pd_os", $pc_pd_os);
+    $insert_stmt16->bindParam(":pc_fitting_od", $pc_fitting_od);
+    $insert_stmt16->bindParam(":pc_fitting_os", $pc_fitting_os);
+    $insert_stmt16->bindParam(":pc_checkbox1", $pc_checkbox1);
+    $insert_stmt16->bindParam(":pc_checkbox_detail1", $pc_checkbox_detail1);
+    $insert_stmt16->bindParam(":pc_checkbox2", $pc_checkbox2);
+    $insert_stmt16->bindParam(":pc_checkbox_detail2", $pc_checkbox_detail2);
+    $insert_stmt16->bindParam(":pc_checkbox3", $pc_checkbox3);
+    $insert_stmt16->bindParam(":pc_checkbox_detail3", $pc_checkbox_detail3);
+    $insert_stmt16->bindParam(":pc_checkbox4", $pc_checkbox4);
+    $insert_stmt16->bindParam(":pc_checkbox_detail4", $pc_checkbox_detail4);
+    $insert_stmt16->bindParam(":pc_checkbox5", $pc_checkbox5);
+    $insert_stmt16->bindParam(":pc_checkbox_detail5", $pc_checkbox_detail5);
+    $insert_stmt16->bindParam(":pc_checkbox6", $pc_checkbox6);
+    $insert_stmt16->bindParam(":pc_checkbox_detail6", $pc_checkbox_detail6);
+    $insert_stmt16->bindParam(":pc_checkbox7", $pc_checkbox7);
+    $insert_stmt16->bindParam(":pc_checkbox_detail7", $pc_checkbox_detail7);
+    $insert_stmt16->bindParam(":pc_note", $pc_note);
+    $insert_stmt16->bindParam(":pi_id", $pi_id);
+    $result16 = $insert_stmt16->execute();
 
-    $insert_stmt16 = $db->prepare("INSERT INTO () VALUES()");
+    $result = $result1 && $result2 && $result3 && $result4 && $result5 && $result6 && $result7 && $result8 && $result9 && $result10 && $result11 && $result12 && $result13 && $result14 && $result15 && $result16;
 
-    if ($result1 && $result2 && $result3 && $result4 && $result5 && $result6 && $result7 && $result8 && $result9) {
+    if ($result) {
       $insertMsg = "Insert Successfully...";
       header('refresh:1; ../index.php');
     }

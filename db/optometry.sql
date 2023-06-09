@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 08, 2023 at 09:59 AM
+-- Generation Time: Jun 09, 2023 at 11:38 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -137,8 +137,14 @@ CREATE TABLE `ohe` (
   `ohe_id` int(11) NOT NULL,
   `ohe_work` varchar(255) NOT NULL,
   `ohe_hobby` varchar(255) NOT NULL,
-  `ohe_checkbox` varchar(255) NOT NULL,
-  `ohe_checkbox_detail` varchar(255) NOT NULL,
+  `ohe_checkbox1` varchar(255) NOT NULL,
+  `ohe_checkbox_detail1` varchar(255) DEFAULT NULL,
+  `ohe_checkbox2` varchar(255) DEFAULT NULL,
+  `ohe_checkbox_detail2` varchar(255) DEFAULT NULL,
+  `ohe_checkbox3` varchar(255) DEFAULT NULL,
+  `ohe_checkbox_detail3` varchar(255) DEFAULT NULL,
+  `ohe_checkbox4` varchar(255) DEFAULT NULL,
+  `ohe_checkbox_detail4` varchar(255) DEFAULT NULL,
   `pi_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -167,14 +173,14 @@ CREATE TABLE `old_rx` (
   `old_VAsc_near_od` varchar(255) NOT NULL,
   `old_VAsc_near_os` varchar(255) NOT NULL,
   `old_VAsc_near_ou` varchar(255) NOT NULL,
-  `old_Vacc_distance_od` varchar(255) NOT NULL,
-  `old_Vacc_distance_os` varchar(255) NOT NULL,
-  `old_Vacc_distance_ou` varchar(255) NOT NULL,
-  `old_Vacc_pinhole_od` varchar(255) NOT NULL,
-  `old_Vacc_pinhole_os` varchar(255) NOT NULL,
-  `old_Vacc_near_od` varchar(255) NOT NULL,
-  `old_Vacc_near_os` varchar(255) NOT NULL,
-  `old_Vacc_near_ou` varchar(255) NOT NULL,
+  `old_VAcc_distance_od` varchar(255) NOT NULL,
+  `old_VAcc_distance_os` varchar(255) NOT NULL,
+  `old_VAcc_distance_ou` varchar(255) NOT NULL,
+  `old_VAcc_pinhole_od` varchar(255) NOT NULL,
+  `old_VAcc_pinhole_os` varchar(255) NOT NULL,
+  `old_VAcc_near_od` varchar(255) NOT NULL,
+  `old_VAcc_near_os` varchar(255) NOT NULL,
+  `old_VAcc_near_ou` varchar(255) NOT NULL,
   `pi_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
