@@ -238,7 +238,14 @@ if (isset($_REQUEST['submit'])) {
   $as_p_accommodate_os = $_REQUEST['as_p_accommodate_os'];
   $as_p_marcus_od = $_REQUEST['as_p_marcus_od'];
   $as_p_marcus_os = $_REQUEST['as_p_marcus_os'];
-  $as_img = $_REQUEST['as_img'];
+
+  $as_img = $_FILES['as_img'];
+  
+  // $path = 'myfolder/myimage.png';
+  // $type = pathinfo($path, PATHINFO_EXTENSION);
+  // $data = file_get_contents($path);
+  // $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+
   $as_assessment = $_REQUEST['as_assessment'];
 
   $ps_radio = $_REQUEST['ps_radio'];
@@ -263,7 +270,7 @@ if (isset($_REQUEST['submit'])) {
   $ps_periphery_od = $_REQUEST['ps_periphery_od'];
   $ps_periphery_os = $_REQUEST['ps_periphery_os'];
 
-  $ps_img = $_REQUEST['ps_img'];
+  $ps_img = $_FILES['ps_img'];
   $ps_treatment = $_REQUEST['ps_treatment'];
   $ps_next = $_REQUEST['ps_next'];
   $ps_examinedby = $_REQUEST['ps_examinedby'];
@@ -665,7 +672,24 @@ if (isset($_REQUEST['submit'])) {
       :ps_avcrossing_os, :ps_macular_od, :ps_macular_os, :ps_fovea_od, :ps_fovea_os, :ps_bg_od, :ps_bg_os,
       :ps_periphery_od, :ps_periphery_os, :ps_img, :ps_treatment, :ps_next, :ps_examinedby, :pi_id
     )";
+
+    $allow = array('jpg', 'jpeg', 'png');
+    $extension1 = explode('.', $as_img['name']);
+    $extension2 = explode('.', $ps_img['name']);
+    $fileActExt1 = strtolower(end($extension1));
+    $fileActExt2 = strtolower(end($extension2));
+    $fileNew1 = rand() . "." . $fileActExt1;  // rand function create the rand number 
+    $fileNew2 = rand() . "." . $fileActExt2;  // rand function create the rand number 
+    $filePath1 = 'uploads/' . $fileNew1;
+    $filePath2 = 'uploads/' . $fileNew2;
+
+    $resultImg = in_array($fileActExt1, $allow) && in_array($fileActExt2, $allow);
+    $checkResultImg = ($as_img['size'] > 0 && $as_img['error'] == 0) && ($ps_img['size'] > 0 && $ps_img['error'] == 0);
+    $result_move_uploaded_file = (move_uploaded_file($as_img['tmp_name'], $filePath1)) && (move_uploaded_file($ps_img['tmp_name'], $filePath2));
+
     $insert_stmt15 = $db->prepare($sql15);
+
+    // Anterior Segment 
     $insert_stmt15->bindParam(":as_lid_od", $as_lid_od);
     $insert_stmt15->bindParam(":as_lid_os", $as_lid_os);
     $insert_stmt15->bindParam(":as_conjunctiva_od", $as_conjunctiva_od);
@@ -695,9 +719,21 @@ if (isset($_REQUEST['submit'])) {
     $insert_stmt15->bindParam(":as_p_accommodate_os", $as_p_accommodate_os);
     $insert_stmt15->bindParam(":as_p_marcus_od", $as_p_marcus_od);
     $insert_stmt15->bindParam(":as_p_marcus_os", $as_p_marcus_os);
-    $insert_stmt15->bindParam(":as_img", $as_img);
+
+    if ($resultImg) {
+      if ($checkResultImg) {
+        if ($result_move_uploaded_file) {
+          // AS Image
+          $insert_stmt15->bindParam(":as_img", $fileNew1);
+          // PS Image
+          $insert_stmt15->bindParam(":ps_img", $fileNew2);
+        }
+      }
+    }
+
     $insert_stmt15->bindParam(":as_assessment", $as_assessment);
 
+    // Posterior Segment
     $insert_stmt15->bindParam(":ps_radio", $ps_radio);
     $insert_stmt15->bindParam(":ps_media_od", $ps_media_od);
     $insert_stmt15->bindParam(":ps_media_os", $ps_media_os);
@@ -719,14 +755,13 @@ if (isset($_REQUEST['submit'])) {
     $insert_stmt15->bindParam(":ps_bg_os", $ps_bg_os);
     $insert_stmt15->bindParam(":ps_periphery_od", $ps_periphery_od);
     $insert_stmt15->bindParam(":ps_periphery_os", $ps_periphery_os);
-    $insert_stmt15->bindParam(":ps_img", $ps_img);
     $insert_stmt15->bindParam(":ps_treatment", $ps_treatment);
     $insert_stmt15->bindParam(":ps_next", $ps_next);
     $insert_stmt15->bindParam(":ps_examinedby", $ps_examinedby);
     $insert_stmt15->bindParam(":pi_id", $pi_id);
     $result15 = $insert_stmt15->execute();
 
-    
+
     $sql16 = "INSERT INTO prescription(
       pc_name, pc_age, pc_date, pc_sphere_od, pc_sphere_os, pc_cylinder_od, pc_cylinder_os,
       pc_axis_od, pc_axis_os, pc_add_od, pc_add_os, pc_prism_od, pc_prism_os, pc_va_od, pc_va_os,
@@ -785,7 +820,7 @@ if (isset($_REQUEST['submit'])) {
     $result = $result1 && $result2 && $result3 && $result4 && $result5 && $result6 && $result7 && $result8 && $result9 && $result10 && $result11 && $result12 && $result13 && $result14 && $result15 && $result16;
 
     if ($result) {
-      $insertMsg = "Insert Successfully...";
+      echo "<script>alert('บันทึกข้อมูลสำเร็จ!');</script>";
       header('refresh:1; ../index.php');
     }
   } catch (PDOException $e) {

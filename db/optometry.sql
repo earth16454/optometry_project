@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 09, 2023 at 11:38 AM
+-- Generation Time: Jun 09, 2023 at 03:44 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -137,7 +137,7 @@ CREATE TABLE `ohe` (
   `ohe_id` int(11) NOT NULL,
   `ohe_work` varchar(255) NOT NULL,
   `ohe_hobby` varchar(255) NOT NULL,
-  `ohe_checkbox1` varchar(255) NOT NULL,
+  `ohe_checkbox1` varchar(255) DEFAULT NULL,
   `ohe_checkbox_detail1` varchar(255) DEFAULT NULL,
   `ohe_checkbox2` varchar(255) DEFAULT NULL,
   `ohe_checkbox_detail2` varchar(255) DEFAULT NULL,
@@ -313,8 +313,20 @@ CREATE TABLE `prescription` (
   `pc_pd_os` varchar(255) NOT NULL,
   `pc_fitting_od` varchar(255) NOT NULL,
   `pc_fitting_os` varchar(255) NOT NULL,
-  `pc_checkbox` varchar(255) NOT NULL,
-  `pc_checkbox_detail` varchar(255) NOT NULL,
+  `pc_checkbox1` varchar(255) DEFAULT NULL,
+  `pc_checkbox_detail1` varchar(255) DEFAULT NULL,
+  `pc_checkbox2` varchar(255) DEFAULT NULL,
+  `pc_checkbox_detail2` varchar(255) DEFAULT NULL,
+  `pc_checkbox3` varchar(255) DEFAULT NULL,
+  `pc_checkbox_detail3` varchar(255) DEFAULT NULL,
+  `pc_checkbox4` varchar(255) DEFAULT NULL,
+  `pc_checkbox_detail4` varchar(255) DEFAULT NULL,
+  `pc_checkbox5` varchar(255) DEFAULT NULL,
+  `pc_checkbox_detail5` varchar(255) DEFAULT NULL,
+  `pc_checkbox6` varchar(255) DEFAULT NULL,
+  `pc_checkbox_detail6` varchar(255) DEFAULT NULL,
+  `pc_checkbox7` varchar(255) DEFAULT NULL,
+  `pc_checkbox_detail7` varchar(255) DEFAULT NULL,
   `pc_note` varchar(255) NOT NULL,
   `pi_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;

@@ -54,19 +54,18 @@
               </li>
             </ul>
             <br />
-            <form action="" method="post" class="needs-validation" novalidate>
+            <form action="process/add.php" method="post" class="needs-validation" novalidate>
               <div class="tab-content pt-2" id="myTabjustifiedContent">
                 <!-- Page 1 -->
                 <?php include_once('component/page1.html'); ?>
 
                 <!-- Page 2 -->
-                <?php //include_once('component/page2.html'); 
-                ?>
+                <?php include_once('component/page2.html'); ?>
 
                 <!-- Page 3 -->
-                <?php // include_once('component/page3.html'); ?>
+                <?php include_once('component/page3.html'); ?>
 
-                <button type="submit" name="submit" class="btn btn-success w-100">Submit</button>
+                <!-- <button type="submit" name="submit" class="btn btn-success w-100">Submit</button> -->
 
               </div>
             </form>

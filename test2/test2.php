@@ -1,10 +1,11 @@
 <?php 
 
-if(isset($_REQUEST['submit'])){
-  $check1 = $_REQUEST['select'];
+// if(isset($_REQUEST['submit'])){
+//   $check1 = $_REQUEST['select'];
 
-  $msg = $check1;
-}
+//   $msg = $check1;
+//   echo "<script>alert('Hello! I am an alert box!');</script>";
+// }
 
 ?>
 <!DOCTYPE html>
@@ -24,7 +25,7 @@ if(isset($_REQUEST['submit'])){
   </head>
   <body>
     <div class="container mt-5" style="max-width: 960px;">
-      <form action="" method="post" class="needs-validation" novalidate>
+      <form action="test_add.php" method="post" class="needs-validation" novalidate>
         <div class="form-check">
           <input class="form-check-input" type="checkbox" value="Check1" id="Check1" name="select" required />
           <label class="form-check-label" for="Check1">Option 1</label>
