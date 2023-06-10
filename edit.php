@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,6 +26,9 @@
 </head>
 
 <body>
+
+  <a href="admin.php" class="btn btn-outline-secondary ms-3 mt-lg-3"><i class="bi bi-arrow-left me-2"></i>back</a>
+
   <!-- ======= Sidebar ======= -->
   <main id="main" class="main">
     <div class="container">
@@ -55,7 +57,7 @@
             </ul>
             <br />
 
-            <form action="process/update.php" method="post" class="needs-validation2" enctype="multipart/form-data" novalidate>
+            <form action="process/update.php" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
               <div class="tab-content pt-2" id="myTabjustifiedContent">
                 <!-- Page 1 -->
                 <?php include_once('component/edit_page1.php'); ?>
@@ -66,7 +68,7 @@
                 <!-- Page 3 -->
                 <?php include_once('component/edit_page3.php'); ?>
 
-                <button type="submit" name="submit" class="btn btn-success w-100">Submit</button>
+                <!-- <button type="submit" name="submit" class="btn btn-success w-100">Submit</button> -->
 
               </div>
             </form>

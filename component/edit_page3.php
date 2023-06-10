@@ -1,6 +1,6 @@
 <?php
 
-require_once 'edit1.php';
+require_once ('get_edit.php');
 
 ?>
 <!-- Page 3 -->
@@ -424,8 +424,8 @@ require_once 'edit1.php';
               name="as_img"
               id="as_img"
               accept="image/jpeg, image/png, image/jpg"
-              required
             />
+            <input type="hidden" value="<?php echo $as_img; ?>" name="as_img2">
           </td>
         </tr>
         <tr>
@@ -454,13 +454,20 @@ require_once 'edit1.php';
                 name="ps_radio"
                 id="ps_radio1"
                 required
-                value="<?php //echo $as_lid_os;
-?>"
+                value="Direct / Indirect Ophthalmoscope"
+                <?php echo ($ps_radio == 'Direct / Indirect Ophthalmoscope' ? 'checked' : '') ?>
               />
               <label class="form-check-label" for="ps_radio1"> Direct / Indirect Ophthalmoscope </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="ps_radio" id="ps_radio2" />
+              <input 
+                class="form-check-input" 
+                type="radio" 
+                name="ps_radio" 
+                id="ps_radio2" 
+                value="Fundus camera" 
+                <?php echo ($ps_radio == 'Fundus camera' ? 'checked' : '') ?>
+              />
               <label class="form-check-label" for="ps_radio2"> Fundus camera </label>
             </div>
           </td>
@@ -751,9 +758,8 @@ require_once 'edit1.php';
               name="ps_img"
               id="ps_img"
               accept="image/jpeg, image/png, image/jpg"
-              required
-              value="<?php echo $ps_img; ?>"
             />
+            <input type="hidden" value="<?php echo $ps_img; ?>" name="ps_img2">
           </td>
         </tr>
         <tr>
@@ -1042,8 +1048,8 @@ require_once 'edit1.php';
   <div class="row my-3 gy-2">
     <div class="col-md-4">
       <input 
-        class="form-check-input" 
         type="checkbox" 
+        class="form-check-input" 
         name="pc_checkbox1" 
         id="checkbox35" 
         value="Distance"

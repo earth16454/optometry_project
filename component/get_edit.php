@@ -67,7 +67,7 @@ if (isset($_GET['pi_id'])) {
 
   $stmt = $db->query("SELECT * FROM prescription WHERE pi_id = $pi_id");
   $stmt->execute();
-  $data_prescription = $stmt->fetch();
+  $data_pc = $stmt->fetch();
 
 
   $pi_firstname = $data_pi['pi_firstname'];
@@ -289,6 +289,9 @@ if (isset($_GET['pi_id'])) {
   $bv_prd = $data_bv['bv_prd'];
   $bv_ta = $data_bv['bv_ta'];
   // $bv_ta_rang = $data_bv['bv_ta_rang1'] . " to " . $_REQUEST['bv_ta_rang1'];
+  $bv_ta_rang = explode(" to ", $data_bv['bv_ta_rang']);
+  $bv_ta_rang1 = $bv_ta_rang[0];
+  $bv_ta_rang2 = $bv_ta_rang[1];
 
   // // Table 14 : additional_test
   $at_text = $data_at['at_text'];
@@ -355,39 +358,39 @@ if (isset($_GET['pi_id'])) {
   $ps_examinedby = $data_sl['ps_examinedby'];
 
   // // Table 16 : prescription
-  $pc_name = $data_prescription['pc_name'];
-  $pc_age = $data_prescription['pc_age'];
-  $pc_date = $data_prescription['pc_date'];
-  $pc_sphere_od = $data_prescription['pc_sphere_od'];
-  $pc_sphere_os = $data_prescription['pc_sphere_os'];
-  $pc_cylinder_od = $data_prescription['pc_cylinder_od'];
-  $pc_cylinder_os = $data_prescription['pc_cylinder_os'];
-  $pc_axis_od = $data_prescription['pc_axis_od'];
-  $pc_axis_os = $data_prescription['pc_axis_os'];
-  $pc_add_od = $data_prescription['pc_add_od'];
-  $pc_add_os = $data_prescription['pc_add_os'];
-  $pc_prism_od = $data_prescription['pc_prism_od'];
-  $pc_prism_os = $data_prescription['pc_prism_os'];
-  $pc_va_od = $data_prescription['pc_va_od'];
-  $pc_va_os = $data_prescription['pc_va_os'];
-  $pc_pd_od = $data_prescription['pc_pd_od'];
-  $pc_pd_os = $data_prescription['pc_pd_os'];
-  $pc_fitting_od = $data_prescription['pc_fitting_od'];
-  $pc_fitting_os = $data_prescription['pc_fitting_os'];
-  $pc_checkbox1 = $data_prescription['pc_checkbox1'];
-  $pc_checkbox2 = $data_prescription['pc_checkbox2'];
-  $pc_checkbox3 = $data_prescription['pc_checkbox3'];
-  $pc_checkbox4 = $data_prescription['pc_checkbox4'];
-  $pc_checkbox5 = $data_prescription['pc_checkbox5'];
-  $pc_checkbox6 = $data_prescription['pc_checkbox6'];
-  $pc_checkbox7 = $data_prescription['pc_checkbox7'];
-  $pc_checkbox_detail1 = $data_prescription['pc_checkbox_detail1'];
-  $pc_checkbox_detail2 = $data_prescription['pc_checkbox_detail2'];
-  $pc_checkbox_detail3 = $data_prescription['pc_checkbox_detail3'];
-  $pc_checkbox_detail4 = $data_prescription['pc_checkbox_detail4'];
-  $pc_checkbox_detail5 = $data_prescription['pc_checkbox_detail5'];
-  $pc_checkbox_detail6 = $data_prescription['pc_checkbox_detail6'];
-  $pc_checkbox_detail7 = $data_prescription['pc_checkbox_detail7'];
-  $pc_note = $data_prescription['pc_note'];
+  $pc_name = $data_pc['pc_name'];
+  $pc_age = $data_pc['pc_age'];
+  $pc_date = $data_pc['pc_date'];
+  $pc_sphere_od = $data_pc['pc_sphere_od'];
+  $pc_sphere_os = $data_pc['pc_sphere_os'];
+  $pc_cylinder_od = $data_pc['pc_cylinder_od'];
+  $pc_cylinder_os = $data_pc['pc_cylinder_os'];
+  $pc_axis_od = $data_pc['pc_axis_od'];
+  $pc_axis_os = $data_pc['pc_axis_os'];
+  $pc_add_od = $data_pc['pc_add_od'];
+  $pc_add_os = $data_pc['pc_add_os'];
+  $pc_prism_od = $data_pc['pc_prism_od'];
+  $pc_prism_os = $data_pc['pc_prism_os'];
+  $pc_va_od = $data_pc['pc_va_od'];
+  $pc_va_os = $data_pc['pc_va_os'];
+  $pc_pd_od = $data_pc['pc_pd_od'];
+  $pc_pd_os = $data_pc['pc_pd_os'];
+  $pc_fitting_od = $data_pc['pc_fitting_od'];
+  $pc_fitting_os = $data_pc['pc_fitting_os'];
+  $pc_checkbox1 = $data_pc['pc_checkbox1'];
+  $pc_checkbox2 = $data_pc['pc_checkbox2'];
+  $pc_checkbox3 = $data_pc['pc_checkbox3'];
+  $pc_checkbox4 = $data_pc['pc_checkbox4'];
+  $pc_checkbox5 = $data_pc['pc_checkbox5'];
+  $pc_checkbox6 = $data_pc['pc_checkbox6'];
+  $pc_checkbox7 = $data_pc['pc_checkbox7'];
+  $pc_checkbox_detail1 = $data_pc['pc_checkbox_detail1'];
+  $pc_checkbox_detail2 = $data_pc['pc_checkbox_detail2'];
+  $pc_checkbox_detail3 = $data_pc['pc_checkbox_detail3'];
+  $pc_checkbox_detail4 = $data_pc['pc_checkbox_detail4'];
+  $pc_checkbox_detail5 = $data_pc['pc_checkbox_detail5'];
+  $pc_checkbox_detail6 = $data_pc['pc_checkbox_detail6'];
+  $pc_checkbox_detail7 = $data_pc['pc_checkbox_detail7'];
+  $pc_note = $data_pc['pc_note'];
 
 }

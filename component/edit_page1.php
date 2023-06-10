@@ -1,6 +1,6 @@
 <?php
 
-require_once 'edit1.php';
+require_once ('get_edit.php');
 
 ?>
 

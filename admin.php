@@ -91,6 +91,8 @@ require_once("process/config.php");
               <th>Address:</th>
               <th>Tel:</th>
               <th>Occupation:</th>
+              <th>Edit</th>
+              <th>Delete</th>
               <th><i class="bi bi-search"></i></th>
             </tr>
           </thead>
@@ -109,7 +111,9 @@ require_once("process/config.php");
               <td><?php echo $row["pi_address"]; ?></td>
               <td><?php echo $row["pi_tel"]; ?></td>
               <td><?php echo $row["pi_occupation"]; ?></td>
-              <td><a href="details.php?pi_id=<?php echo $row['pi_id']; ?>">View</a></td>
+              <td><a href="edit.php?pi_id=<?php echo $row['pi_id']; ?>" class="btn btn-warning">Edit</a></td>
+              <td><a href="process/delete.php?delete=<?php echo $row['pi_id']; ?>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete?');">Delete</a></td>
+              <td><a href="details.php?pi_id=<?php echo $row['pi_id']; ?>" class="btn btn-primary">View</a></td>
             </tr>
             <?php } ?>
           </tbody>

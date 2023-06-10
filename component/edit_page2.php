@@ -1,6 +1,6 @@
 <?php
 
-require_once('edit1.php');
+require_once ('get_edit.php');
 
 ?>
 <!-- Page 2 -->
@@ -754,9 +754,9 @@ require_once('edit1.php');
       <div class="col-12 col-md-6">
         <label for="bv_ta_rang" class="form-label">Range :</label>
         <div class="input-group">
-          <input type="text" name="bv_ta_rang1" id="bv_ta_rang" class="form-control" value="<?php //echo $bv_distance_infra; ?>" required />
+          <input type="text" name="bv_ta_rang1" id="bv_ta_rang" class="form-control" value="<?php echo $bv_ta_rang1; ?>" required />
           <span class="input-group-text">to</span>
-          <input type="text" name="bv_ta_rang2" id="bv_ta_rang" class="form-control" value="<?php //echo $bv_distance_infra; ?>" required />
+          <input type="text" name="bv_ta_rang2" id="bv_ta_rang" class="form-control" value="<?php echo $bv_ta_rang2; ?>" required />
           <span class="input-group-text">cm.</span>
         </div>
       </div>

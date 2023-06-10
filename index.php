@@ -66,7 +66,7 @@
                 <!-- Page 3 -->
                 <?php include_once('component/page3.html'); ?>
 
-                <button type="submit" name="submit" class="btn btn-success w-100">Submit</button>
+                <!-- <button type="submit" name="submit" class="btn btn-success w-100">Submit</button> -->
 
               </div>
             </form>

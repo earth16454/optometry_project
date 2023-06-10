@@ -240,6 +240,7 @@ if (isset($_REQUEST['submit'])) {
   $as_p_marcus_od = $_REQUEST['as_p_marcus_od'];
   $as_p_marcus_os = $_REQUEST['as_p_marcus_os'];
   $as_img = $_FILES['as_img'];
+  $as_img2 = $_REQUEST['as_img2'];
   $as_assessment = $_REQUEST['as_assessment'];
 
   $ps_radio = $_REQUEST['ps_radio'];
@@ -264,6 +265,7 @@ if (isset($_REQUEST['submit'])) {
   $ps_periphery_od = $_REQUEST['ps_periphery_od'];
   $ps_periphery_os = $_REQUEST['ps_periphery_os'];
   $ps_img = $_FILES['ps_img'];
+  $ps_img2 = $_REQUEST['ps_img2'];
   $ps_treatment = $_REQUEST['ps_treatment'];
   $ps_next = $_REQUEST['ps_next'];
   $ps_examinedby = $_REQUEST['ps_examinedby'];
@@ -349,10 +351,7 @@ if (isset($_REQUEST['submit'])) {
     $insert_stmt1->bindParam(":pi_occupation", $pi_occupation);
     $result1 = $insert_stmt1->execute();
 
-    // $pi_id = $db->lastInsertId();
-
-
-    $sql2 = "UPDATE chief_complaint SET cc_text = : cc_text, cc_symptoms = :cc_symptoms WHERE pi_id = :pi_id";
+    $sql2 = "UPDATE chief_complaint SET cc_text = :cc_text, cc_symptoms = :cc_symptoms WHERE pi_id = :pi_id";
     $insert_stmt2 = $db->prepare($sql2);
     $insert_stmt2->bindParam(":cc_text", $cc_text);
     $insert_stmt2->bindParam(":cc_symptoms", $cc_symptoms);
@@ -385,7 +384,7 @@ if (isset($_REQUEST['submit'])) {
     $result3 = $insert_stmt3->execute();
 
 
-    $sql4 = "UPDATE ha_hx SET ha_radio = :ha_radio, ha_radio_detail = :ha_radio_detail, WHERE pi_id = :pi_id";
+    $sql4 = "UPDATE ha_hx SET ha_radio = :ha_radio, ha_radio_detail = :ha_radio_detail WHERE pi_id = :pi_id";
     $insert_stmt4 = $db->prepare($sql4);
     $insert_stmt4->bindParam(":ha_radio", $ha_radio);
     $insert_stmt4->bindParam(":ha_radio_detail", $ha_radio_detail);
@@ -444,7 +443,7 @@ if (isset($_REQUEST['submit'])) {
       ohe_checkbox3 = :ohe_checkbox3, 
       ohe_checkbox_detail3 = :ohe_checkbox_detail3, 
       ohe_checkbox4 = :ohe_checkbox4, 
-      ohe_checkbox_detail4 = :ohe_checkbox_detail4, 
+      ohe_checkbox_detail4 = :ohe_checkbox_detail4
       WHERE pi_id = :pi_id
     ";
     $insert_stmt8 = $db->prepare($sql8);
@@ -695,14 +694,14 @@ if (isset($_REQUEST['submit'])) {
     $result13 = $insert_stmt13->execute();
 
 
-    $sql14 = "UPDATE additional_test SET at_text = :at_text, pi_id = :pi_id";
+    $sql14 = "UPDATE additional_test SET at_text = :at_text WHERE pi_id = :pi_id";
     $insert_stmt14 = $db->prepare($sql14);
     $insert_stmt14->bindParam(":at_text", $at_text);
     $insert_stmt14->bindParam(":pi_id", $pi_id);
     $result14 = $insert_stmt14->execute();
 
 
-    $sql15 = "INSERT INTO slit_lamp(
+    $sql15 = "UPDATE slit_lamp SET
       as_lid_od = :as_lid_od, 
       as_lid_os = :as_lid_os, 
       as_conjunctiva_od = :as_conjunctiva_od, 
@@ -762,19 +761,36 @@ if (isset($_REQUEST['submit'])) {
       WHERE pi_id = :pi_id
     ";
 
-    $allow = array('jpg', 'jpeg', 'png');
-    $extension1 = explode('.', $as_img['name']);
-    $extension2 = explode('.', $ps_img['name']);
-    $fileActExt1 = strtolower(end($extension1));
-    $fileActExt2 = strtolower(end($extension2));
-    $fileNew1 = rand() . "." . $fileActExt1;  // rand function create the rand number 
-    $fileNew2 = rand() . "." . $fileActExt2;  // rand function create the rand number 
-    $filePath1 = '../uploads/' . $fileNew1;
-    $filePath2 = '../uploads/' . $fileNew2;
+    $upload = $_FILES['as_img']['name'];
 
-    $resultImg = in_array($fileActExt1, $allow) && in_array($fileActExt2, $allow);
-    $checkResultImg = ($as_img['size'] > 0 && $as_img['error'] == 0) && ($ps_img['size'] > 0 && $ps_img['error'] == 0);
-    $result_move_uploaded_file = (move_uploaded_file($as_img['tmp_name'], $filePath1)) && (move_uploaded_file($ps_img['tmp_name'], $filePath2));
+    
+    
+    if($upload != ''){
+      $allow = array('jpg', 'jpeg', 'png');
+      $extension1 = explode('.', $as_img['name']);
+      $extension2 = explode('.', $ps_img['name']);
+      $fileActExt1 = strtolower(end($extension1));
+      $fileActExt2 = strtolower(end($extension2));
+      $fileNew1 = rand() . "." . $fileActExt1;  // rand function create the rand number 
+      $fileNew2 = rand() . "." . $fileActExt2;  // rand function create the rand number 
+      $filePath1 = '../uploads/' . $fileNew1;
+      $filePath2 = '../uploads/' . $fileNew2;
+      
+      $resultImg = in_array($fileActExt1, $allow) && in_array($fileActExt2, $allow);
+      $checkResultImg = ($as_img['size'] > 0 && $as_img['error'] == 0) && ($ps_img['size'] > 0 && $ps_img['error'] == 0);
+      $result_move_uploaded_file = (move_uploaded_file($as_img['tmp_name'], $filePath1)) && (move_uploaded_file($ps_img['tmp_name'], $filePath2));
+      
+      if ($resultImg) {
+        if ($checkResultImg) {
+          move_uploaded_file($as_img['tmp_name'], $filePath1);
+          move_uploaded_file($ps_img['tmp_name'], $filePath2);
+        }
+      }
+
+    } else {
+      $fileNew1 = $as_img2;
+      $fileNew2 = $ps_img2;
+    }
 
     $insert_stmt15 = $db->prepare($sql15);
 
@@ -808,18 +824,7 @@ if (isset($_REQUEST['submit'])) {
     $insert_stmt15->bindParam(":as_p_accommodate_os", $as_p_accommodate_os);
     $insert_stmt15->bindParam(":as_p_marcus_od", $as_p_marcus_od);
     $insert_stmt15->bindParam(":as_p_marcus_os", $as_p_marcus_os);
-
-    if ($resultImg) {
-      if ($checkResultImg) {
-        if ($result_move_uploaded_file) {
-          // AS Image
-          $insert_stmt15->bindParam(":as_img", $fileNew1);
-          // PS Image
-          $insert_stmt15->bindParam(":ps_img", $fileNew2);
-        }
-      }
-    }
-
+    $insert_stmt15->bindParam(":as_img", $fileNew1);
     $insert_stmt15->bindParam(":as_assessment", $as_assessment);
 
     // Posterior Segment
@@ -844,7 +849,9 @@ if (isset($_REQUEST['submit'])) {
     $insert_stmt15->bindParam(":ps_bg_os", $ps_bg_os);
     $insert_stmt15->bindParam(":ps_periphery_od", $ps_periphery_od);
     $insert_stmt15->bindParam(":ps_periphery_os", $ps_periphery_os);
+    $insert_stmt15->bindParam(":ps_img", $fileNew2);
     $insert_stmt15->bindParam(":ps_treatment", $ps_treatment);
+
     $insert_stmt15->bindParam(":ps_next", $ps_next);
     $insert_stmt15->bindParam(":ps_examinedby", $ps_examinedby);
     $insert_stmt15->bindParam(":pi_id", $pi_id);
@@ -927,9 +934,10 @@ if (isset($_REQUEST['submit'])) {
     $result16 = $insert_stmt16->execute();
 
 
-    $result = $result1;
+    // $result = $result1 && $result2 && $result3 && $result4 && $result5 && $result6 && $result7 && $result8 && $result9 && $result10 && $result11 && $result12 && $result13 && $result14;
+    $result = $result1 && $result2 && $result3 && $result4 && $result5 && $result6 && $result7 && $result8 && $result9 && $result10 && $result11 && $result12 && $result13 && $result14 && $result15 && $result16;
 
-    if ($result1) {
+    if ($result) {
       echo "<script>alert('บันทึกข้อมูลสำเร็จ!');</script>";
       header("refresh:1; ../edit.php?pi_id=$pi_id");
     }
