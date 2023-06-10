@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>URL, file to input and preview</title>
+  </head>
+  <body>
+    <h1>Load URL to input</h1>
+    <input
+      width="100%"
+      id="url"
+      type="text"
+      placeholder="paste url image here"
+      value="https://cloudinary-res.cloudinary.com/image/upload/dpr_2.0,c_scale,f_auto,q_auto,w_156/cloudinary_logo_for_white_bg.svg"
+    />
+    <button id="loadUrl">Load URL to input type file</button>
+    <input id="file_input" type="file" />
+    <span>status input file type: <span id="status"></span></span>
+
+    <h1>Load input to preview</h1>
+    <button id="loadImage">Load input above to preview</button>
+    <img src="" id="img-preview" alt="img-preview" />
+
+    <h1>Load input file browser to preview</h1>
+    <input type="file" name="" id="file_browser" />
+    <img src="" id="img-preview2" alt="preview2" />
+
+    <script>
+      var btnLoadUrl = document.querySelector("#loadUrl");
+      btnLoadUrl.addEventListener("click", () => {
+        var url = document.querySelector("#url").value;
+        loadURLToInputField(url);
+      });
+
+      var btnLoadImage = document.querySelector("#loadImage");
+      btnLoadImage.addEventListener("click", () => {
+        var img_preview = document.querySelector("#img-preview");
+        console.log(img_preview);
+        loadInputFieldToPreview(img_preview);
+      });
+
+      var file_browser = document.querySelector("#file_browser");
+      var img_preview2 = document.querySelector("#img-preview2");
+      file_browser.addEventListener("change", () => {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          img_preview2.src = e.target.result;
+        };
+        reader.readAsDataURL(document.querySelector("#file_browser").files[0]);
+      });
+
+      function loadURLToInputField(url) {
+        getImgURL(url, (imgBlob) => {
+          // Load img blob to input
+          let fileName = "hasFilename.jpg"; // should .replace(/[/\\?%*:|"<>]/g, '-') for remove special char like / \
+          let file = new File([imgBlob], fileName, { type: "image/jpeg", lastModified: new Date().getTime() }, "utf-8");
+          let container = new DataTransfer();
+          container.items.add(file);
+          document.querySelector("#file_input").files = container.files;
+          // document.querySelector('#status').files = container.files;
+        });
+      }
+
+      function loadInputFieldToPreview(imgElement) {
+        // Load preview to img tag
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          imgElement.src = e.target.result;
+        };
+        reader.readAsDataURL(document.querySelector("#file_input").files[0]); // convert to base64 string
+      }
+
+      // xml json res
+      function httpGetAsync(url, callback) {
+        var req = new XMLHttpRequest();
+        req.responseType = "json";
+        req.open("GET", url);
+        req.onload = function () {
+          var jsonResponse = req.response;
+          callback(jsonResponse);
+          // do something with jsonResponse
+        };
+        req.send(null);
+      }
+
+      // xml blob res
+      function getImgURL(url, callback) {
+        var xhr = new XMLHttpRequest();
+        xhr.onload = function () {
+          callback(xhr.response);
+        };
+        xhr.open("GET", url);
+        xhr.responseType = "blob";
+        xhr.send();
+      }
+
+      //check input status
+      setInterval(() => {
+        var input = document.querySelector("#file_input");
+        var status = document.querySelector("#status");
+        if (input.value) {
+          status.innerHTML = "has input";
+        } else {
+          status.innerHTML = "empty input";
+        }
+      }, 500);
+    </script>
+  </body>
+</html>

@@ -55,7 +55,7 @@
             </ul>
             <br />
 
-            <form action="process/test_update.php" method="post" class="needs-validation2" enctype="multipart/form-data" novalidate>
+            <form action="process/update.php" method="post" class="needs-validation2" enctype="multipart/form-data" novalidate>
               <div class="tab-content pt-2" id="myTabjustifiedContent">
                 <!-- Page 1 -->
                 <?php include_once('component/edit_page1.php'); ?>
@@ -64,7 +64,7 @@
                 <?php include_once('component/edit_page2.php'); ?>
 
                 <!-- Page 3 -->
-                <?php include_once('component/edit3.html'); ?>
+                <?php include_once('component/edit_page3.php'); ?>
 
                 <button type="submit" name="submit" class="btn btn-success w-100">Submit</button>
 

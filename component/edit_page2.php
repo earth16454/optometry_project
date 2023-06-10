@@ -15,23 +15,23 @@ require_once('edit1.php');
       <div class="col-12">
         <p class="fw-bold">Old Rx :</p>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="old_Rx" id="old_Rx1" value="แว่นมองไกล" required />
+          <input class="form-check-input" type="radio" name="old_Rx" id="old_Rx1" value="แว่นมองไกล" <?php echo ($old_Rx == 'แว่นมองไกล' ? 'checked' : ''); ?> required />
           <label class="form-check-label" for="old_Rx1">แว่นมองไกล</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="old_Rx" id="old_Rx2" value="แว่นมองใกล้" />
+          <input class="form-check-input" type="radio" name="old_Rx" id="old_Rx2" value="แว่นมองใกล้" <?php echo ($old_Rx == 'แว่นมองใกล้' ? 'checked' : ''); ?> />
           <label class="form-check-label" for="old_Rx2">แว่นมองใกล้</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="old_Rx" id="old_Rx3" value="แว่นสองชั้น" />
+          <input class="form-check-input" type="radio" name="old_Rx" id="old_Rx3" value="แว่นสองชั้น" <?php echo ($old_Rx == 'แว่นสองชั้น' ? 'checked' : ''); ?> />
           <label class="form-check-label" for="old_Rx3">แว่นสองชั้น</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="old_Rx" id="old_Rx4" value="แว่นโปรเกรสซีฟ" />
+          <input class="form-check-input" type="radio" name="old_Rx" id="old_Rx4" value="แว่นโปรเกรสซีฟ" <?php echo ($old_Rx == 'แว่นโปรเกรสซีฟ' ? 'checked' : ''); ?> />
           <label class="form-check-label" for="old_Rx4">แว่นโปรเกรสซีฟ</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="old_Rx" id="old_Rx5" value="Prism" />
+          <input class="form-check-input" type="radio" name="old_Rx" id="old_Rx5" value="Prism" <?php echo ($old_Rx == 'Prism' ? 'checked' : ''); ?> />
           <label class="form-check-label" for="old_Rx5">Prism</label>
         </div>
       </div>
@@ -219,9 +219,9 @@ require_once('edit1.php');
       <label for="npc" class="col-6 col-md-4 form-label">NPC : (Break/Recovery)</label>
       <div class="col-6 col-md-8">
         <div class="input-group">
-          <input type="text" name="npc1" id="npc1" class="form-control" value="<?php //echo $pe_npc; ?>" required />
+          <input type="text" name="npc1" id="npc1" class="form-control" value="<?php echo $npc1; ?>" required />
           <span class="input-group-text">/</span>
-          <input type="text" name="npc2" id="npc2" class="form-control" value="<?php //echo $pe_npc; ?>" required />
+          <input type="text" name="npc2" id="npc2" class="form-control" value="<?php echo $npc2; ?>" required />
           <span class="input-group-text">cm</span>
         </div>
       </div>
@@ -334,17 +334,17 @@ require_once('edit1.php');
       <label for="ref_km_od1" class="form-label col-3 col-md-2">OD :</label>
       <div class="col-9 col-md-4">
         <div class="input-group" id="ref_km_od">
-          <input type="text" name="ref_km_od1" id="ref_km_od1" class="form-control" value="<?php //echo $ref_km_od; ?>" required />
+          <input type="text" name="ref_km_od1" id="ref_km_od1" class="form-control" value="<?php echo $ref_km_od1; ?>" required />
           <span class="input-group-text">/</span>
-          <input type="text" name="ref_km_od2" id="ref_km_od2" class="form-control" value="<?php //echo $pe_grid_time; ?>" required />
+          <input type="text" name="ref_km_od2" id="ref_km_od2" class="form-control" value="<?php echo $ref_km_od2; ?>" required />
         </div>
       </div>
       <label for="ref_km_os1" class="form-label col-3 col-md-2">OS :</label>
       <div class="col-9 col-md-4">
         <div class="input-group">
-          <input type="text" name="ref_km_os1" id="ref_km_os1" class="form-control" value="<?php //echo $pe_grid_time; ?>" required />
+          <input type="text" name="ref_km_os1" id="ref_km_os1" class="form-control" value="<?php echo $ref_km_os1; ?>" required />
           <span class="input-group-text">/</span>
-          <input type="text" name="ref_km_os2" id="ref_km_os2" class="form-control" value="<?php //echo $pe_grid_time; ?>" required />
+          <input type="text" name="ref_km_os2" id="ref_km_os2" class="form-control" value="<?php echo $ref_km_os2; ?>" required />
         </div>
       </div>
     </div>
@@ -477,22 +477,22 @@ require_once('edit1.php');
       <div class="col-md-5">
         <label for="bv_distance_bi" class="form-label">BI :</label>
         <div class="input-group">
-          <input type="text" name="bv_distance_bi1" id="bv_distance_bi" class="form-control" value="<?php //echo $bv_distance_bi; ?>" required />
+          <input type="text" name="bv_distance_bi1" id="bv_distance_bi" class="form-control" value="<?php echo $bv_distance_bi1; ?>" required />
           <span class="input-group-text">/</span>
-          <input type="text" name="bv_distance_bi2" id="bv_distance_bi" class="form-control" value="<?php //echo $bv_distance_bi; ?>" required />
+          <input type="text" name="bv_distance_bi2" id="bv_distance_bi" class="form-control" value="<?php echo $bv_distance_bi2; ?>" required />
           <span class="input-group-text">/</span>
-          <input type="text" name="bv_distance_bi3" id="bv_distance_bi" class="form-control" value="<?php //echo $bv_distance_bi; ?>" required />
+          <input type="text" name="bv_distance_bi3" id="bv_distance_bi" class="form-control" value="<?php echo $bv_distance_bi3; ?>" required />
         </div>
       </div>
 
       <div class="col-md-5">
         <label for="bv_distance_bo" class="form-label">BO :</label>
         <div class="input-group mb-3">
-          <input type="text" name="bv_distance_bo1" id="bv_distance_bo" class="form-control" value="<?php //echo $bv_distance_bo; ?>" required />
+          <input type="text" name="bv_distance_bo1" id="bv_distance_bo" class="form-control" value="<?php echo $bv_distance_bo1; ?>" required />
           <span class="input-group-text">/</span>
-          <input type="text" name="bv_distance_bo2" id="bv_distance_bo" class="form-control" value="<?php //echo $bv_distance_bo; ?>" required />
+          <input type="text" name="bv_distance_bo2" id="bv_distance_bo" class="form-control" value="<?php echo $bv_distance_bo2; ?>" required />
           <span class="input-group-text">/</span>
-          <input type="text" name="bv_distance_bo3" id="bv_distance_bo" class="form-control" value="<?php //echo $bv_distance_bo; ?>" required />
+          <input type="text" name="bv_distance_bo3" id="bv_distance_bo" class="form-control" value="<?php echo $bv_distance_bo3; ?>" required />
         </div>
       </div>
 
@@ -506,17 +506,17 @@ require_once('edit1.php');
       <div class="col-md-5">
         <label for="bv_distance_supra" class="form-label">Supra :</label>
         <div class="input-group">
-          <input type="text" name="bv_distance_supra1" id="bv_distance_supra" class="form-control" value="<?php //echo $bv_distance_supra; ?>" required />
+          <input type="text" name="bv_distance_supra1" id="bv_distance_supra" class="form-control" value="<?php echo $bv_distance_supra1; ?>" required />
           <span class="input-group-text">/</span>
-          <input type="text" name="bv_distance_supra2" id="bv_distance_supra" class="form-control" value="<?php //echo $bv_distance_supra; ?>" required />
+          <input type="text" name="bv_distance_supra2" id="bv_distance_supra" class="form-control" value="<?php echo $bv_distance_supra2; ?>" required />
         </div>
       </div>
       <div class="col-md-5">
         <label for="bv_distance_infra" class="form-label">Infra :</label>
         <div class="input-group">
-          <input type="text" name="bv_distance_infra1" id="bv_distance_infra" class="form-control" value="<?php //echo $bv_distance_infra; ?>" required />
+          <input type="text" name="bv_distance_infra1" id="bv_distance_infra" class="form-control" value="<?php echo $bv_distance_infra1; ?>" required />
           <span class="input-group-text">/</span>
-          <input type="text" name="bv_distance_infra2" id="bv_distance_infra" class="form-control" value="<?php //echo $bv_distance_infra; ?>" required />
+          <input type="text" name="bv_distance_infra2" id="bv_distance_infra" class="form-control" value="<?php echo $bv_distance_infra2; ?>" required />
         </div>
       </div>
     </div>
@@ -527,9 +527,24 @@ require_once('edit1.php');
       <div class="col-md-4">
         <label for="near" class="form-label"
           ><b>Near</b> (On :
-          <input type="radio" name="bv_near_radio" id="bv_near_radio1" class="form-check-input" value="BVA" required />
+          <input 
+            type="radio" 
+            name="bv_near_radio" 
+            id="bv_near_radio1" 
+            class="form-check-input" 
+            value="BVA" 
+            required 
+            <?php echo ($bv_near_radio == 'BVA' ? 'checked' : ''); ?>
+          />
           <label for="bv_near_radio1" class="form-check-label">BVA &nbsp;</label>
-          <input type="radio" name="bv_near_radio" id="bv_near_radio2" class="form-check-input" value="BCC" />
+          <input 
+            type="radio" 
+            name="bv_near_radio" 
+            id="bv_near_radio2" 
+            class="form-check-input" 
+            value="BCC" 
+            <?php echo ($bv_near_radio == 'BCC' ? 'checked' : ''); ?> 
+          />
           <label for="bv_near_radio2" class="form-check-label"> BCC )</label>
         </label>
       </div>
@@ -546,22 +561,22 @@ require_once('edit1.php');
       <div class="col-md-5">
         <label for="bv_near_bi" class="form-label">BI :</label>
         <div class="input-group">
-          <input type="text" name="bv_near_bi1" id="bv_near_bi" class="form-control" value="<?php //echo $bv_near_bi; ?>" required />
+          <input type="text" name="bv_near_bi1" id="bv_near_bi" class="form-control" value="<?php echo $bv_near_bi1; ?>" required />
           <span class="input-group-text">/</span>
-          <input type="text" name="bv_near_bi2" id="bv_near_bi" class="form-control" value="<?php //echo $bv_near_bi; ?>" required />
+          <input type="text" name="bv_near_bi2" id="bv_near_bi" class="form-control" value="<?php echo $bv_near_bi2; ?>" required />
           <span class="input-group-text">/</span>
-          <input type="text" name="bv_near_bi3" id="bv_near_bi" class="form-control" value="<?php //echo $bv_near_bi; ?>" required />
+          <input type="text" name="bv_near_bi3" id="bv_near_bi" class="form-control" value="<?php echo $bv_near_bi3; ?>" required />
         </div>
       </div>
 
       <div class="col-md-5">
         <label for="bv_near_bo" class="form-label">BO :</label>
         <div class="input-group mb-3">
-          <input type="text" name="bv_near_bo1" id="bv_near_bo" class="form-control" value="<?php //echo $bv_near_bo; ?>" required />
+          <input type="text" name="bv_near_bo1" id="bv_near_bo" class="form-control" value="<?php echo $bv_near_bo1; ?>" required />
           <span class="input-group-text">/</span>
-          <input type="text" name="bv_near_bo2" id="bv_near_bo" class="form-control" value="<?php //echo $bv_near_bo; ?>" required />
+          <input type="text" name="bv_near_bo2" id="bv_near_bo" class="form-control" value="<?php echo $bv_near_bo2; ?>" required />
           <span class="input-group-text">/</span>
-          <input type="text" name="bv_near_bo3" id="bv_near_bo" class="form-control" value="<?php //echo $bv_near_bo; ?>" required />
+          <input type="text" name="bv_near_bo3" id="bv_near_bo" class="form-control" value="<?php echo $bv_near_bo3; ?>" required />
         </div>
       </div>
 
@@ -575,17 +590,17 @@ require_once('edit1.php');
       <div class="col-md-5">
         <label for="bv_near_supra" class="form-label">Supra :</label>
         <div class="input-group">
-          <input type="text" name="bv_near_supra1" id="bv_near_supra" class="form-control" value="<?php //echo $bv_near_supra; ?>" required />
+          <input type="text" name="bv_near_supra1" id="bv_near_supra" class="form-control" value="<?php echo $bv_near_supra1; ?>" required />
           <span class="input-group-text">/</span>
-          <input type="text" name="bv_near_supra2" id="bv_near_supra" class="form-control" value="<?php //echo $bv_near_supra; ?>" required />
+          <input type="text" name="bv_near_supra2" id="bv_near_supra" class="form-control" value="<?php echo $bv_near_supra2; ?>" required />
         </div>
       </div>
       <div class="col-md-5">
         <label for="bv_near_infra" class="form-label">Infra :</label>
         <div class="input-group">
-          <input type="text" name="bv_near_infra1" id="bv_near_infra" class="form-control" value="<?php //echo $bv_near_infra; ?>" required />
+          <input type="text" name="bv_near_infra1" id="bv_near_infra" class="form-control" value="<?php echo $bv_near_infra1; ?>" required />
           <span class="input-group-text">/</span>
-          <input type="text" name="bv_near_infra2" id="bv_near_infra" class="form-control" value="<?php //echo $bv_near_infra; ?>" required />
+          <input type="text" name="bv_near_infra2" id="bv_near_infra" class="form-control" value="<?php echo $bv_near_infra2; ?>" required />
         </div>
       </div>
     </div>
@@ -595,9 +610,24 @@ require_once('edit1.php');
       <div class="col-md-4">
         <label for="" class="form-label"
           >On :
-          <input type="radio" name="bv_cal_radio" id="bv_cal_radio1" class="form-check-input" value="BVA" required />
+          <input 
+            type="radio" 
+            name="bv_cal_radio" 
+            id="bv_cal_radio1" 
+            class="form-check-input" 
+            value="BVA" 
+            required 
+            <?php echo ($bv_cal_radio == 'BVA' ? 'checked' : ''); ?>
+          />
           <label for="bv_cal_radio1" class="form-check-label">BVA &nbsp;</label>
-          <input class="form-check-input" type="radio" name="bv_cal_radio" id="bv_cal_radio2" value="BCC" />
+          <input 
+            class="form-check-input" 
+            type="radio" 
+            name="bv_cal_radio" 
+            id="bv_cal_radio2" 
+            value="BCC" 
+            <?php echo ($bv_cal_radio == 'BCC' ? 'checked' : ''); ?>
+          />
           <label class="form-check-label" for="bv_cal_radio2"> BCC </label>
         </label>
       </div>

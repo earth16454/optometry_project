@@ -61,13 +61,13 @@ if (isset($_GET['pi_id'])) {
   $stmt->execute();
   $data_at = $stmt->fetch();
 
-  // $stmt = $db->query("SELECT * FROM slit_lamp WHERE pi_id = $pi_id");
-  // $stmt->execute();
-  // $data_sl = $stmt->fetch();
+  $stmt = $db->query("SELECT * FROM slit_lamp WHERE pi_id = $pi_id");
+  $stmt->execute();
+  $data_sl = $stmt->fetch();
 
-  // $stmt = $db->query("SELECT * FROM prescription WHERE pi_id = $pi_id");
-  // $stmt->execute();
-  // $data_prescription = $stmt->fetch();
+  $stmt = $db->query("SELECT * FROM prescription WHERE pi_id = $pi_id");
+  $stmt->execute();
+  $data_prescription = $stmt->fetch();
 
 
   $pi_firstname = $data_pi['pi_firstname'];
@@ -171,9 +171,9 @@ if (isset($_GET['pi_id'])) {
   $pe_aa_os = $data_pe['pe_aa_os'];
 
   // ตรงนี้
-  // $npc1 = $data_pe['npc1'];
-  // $npc2 = $data_pe['npc2'];
-  // $pe_npc = $npc1 . " / " . $npc2;
+  $pe_npc = explode(" / ",$data_pe['pe_npc']);
+  $npc1 = $pe_npc[0];
+  $npc2 = $pe_npc[1];
 
   $pe_motility = $data_pe['pe_motility'];
   $pe_con = $data_pe['pe_con'];
@@ -191,8 +191,12 @@ if (isset($_GET['pi_id'])) {
   $pe_grid_time = $data_pe['pe_grid_time'];
 
   // Table 12 : refraction
-  // $ref_km_od = $data_ref['ref_km_od1'] . " / " . $_REQUEST['ref_km_od2'];
-  // $ref_km_os = $data_ref['ref_km_os1'] . " / " . $_REQUEST['ref_km_os2'];
+  $ref_km_od = explode(" / ", $data_ref['ref_km_od']);
+  $ref_km_os = explode(" / ", $data_ref['ref_km_os']);
+  $ref_km_od1 = $ref_km_od[0];
+  $ref_km_od2 = $ref_km_od[1];
+  $ref_km_os1 = $ref_km_os[0];
+  $ref_km_os2 = $ref_km_os[1];
 
   $ref_sr_od = $data_ref['ref_sr_od'];
   $ref_sr_od_va = $data_ref['ref_sr_od_va'];
@@ -220,18 +224,48 @@ if (isset($_GET['pi_id'])) {
   // Table 13 : binocular_vission 
 
   $bv_distance_h = $data_bv['bv_distance_h'];
-  // $bv_distance_bi = $data_bv['bv_distance_bi1'] . " / " . $_REQUEST['bv_distance_bi2'] . " / " . $_REQUEST['bv_distance_bi3'];
-  // $bv_distance_bo = $data_bv['bv_distance_bo1'] . " / " . $_REQUEST['bv_distance_bo2'] . " / " . $_REQUEST['bv_distance_bo3'];
+  $bv_distance_bi = explode(" / ", $data_bv['bv_distance_bi']);
+  $bv_distance_bi1 = $bv_distance_bi[0];
+  $bv_distance_bi2 = $bv_distance_bi[1];
+  $bv_distance_bi3 = $bv_distance_bi[2];
+
+  $bv_distance_bo = explode(" / ", $data_bv['bv_distance_bi']);
+  $bv_distance_bo1 = $bv_distance_bo[0];
+  $bv_distance_bo2 = $bv_distance_bo[1];
+  $bv_distance_bo3 = $bv_distance_bo[2];
+
   $bv_distance_vertical = $data_bv['bv_distance_vertical'];
-  // $bv_distance_supra = $data_bv['bv_distance_supra1'] . " / " . $_REQUEST['bv_distance_supra2'];
-  // $bv_distance_infra = $data_bv['bv_distance_infra1'] . " / " . $_REQUEST['bv_distance_infra2'];
+
+  $bv_distance_supra = explode(" / ", $data_bv['bv_distance_supra']);
+  $bv_distance_supra1 = $bv_distance_supra[0];
+  $bv_distance_supra2 = $bv_distance_supra[1];
+
+  $bv_distance_infra = explode(" / ", $data_bv['bv_distance_infra']);
+  $bv_distance_infra1 = $bv_distance_infra[0];
+  $bv_distance_infra2 = $bv_distance_infra[1];
 
   $bv_near_radio = $data_bv['bv_near_radio'];
   $bv_near_h = $data_bv['bv_near_h'];
-  // $bv_near_bi = $_REQUEST['bv_near_bi1'] . " / " . $_REQUEST['bv_near_bi2'] . " / " . $_REQUEST['bv_near_bi3'];
-  // $bv_near_bo = $_REQUEST['bv_near_bo1'] . " / " . $_REQUEST['bv_near_bo2'] . " / " . $_REQUEST['bv_near_bo3'];
+
+  $bv_near_bi = explode(" / ", $data_bv['bv_near_bi']);
+  $bv_near_bi1 = $bv_near_bi[0];
+  $bv_near_bi2 = $bv_near_bi[1];
+  $bv_near_bi3 = $bv_near_bi[2];
+
+  $bv_near_bo = explode(" / ", $data_bv['bv_near_bo']);
+  $bv_near_bo1 = $bv_near_bo[0];
+  $bv_near_bo2 = $bv_near_bo[1];
+  $bv_near_bo3 = $bv_near_bo[2];
 
   $bv_near_vertical = $data_bv['bv_near_vertical'];
+
+  $bv_near_supra = explode(" / ", $data_bv['bv_near_supra']);
+  $bv_near_supra1 = $bv_near_supra[0];
+  $bv_near_supra2 = $bv_near_supra[1];
+
+  $bv_near_infra = explode(" / ", $data_bv['bv_near_supra']);
+  $bv_near_infra1 = $bv_near_infra[0];
+  $bv_near_infra2 = $bv_near_infra[1];
 
   // $bv_near_supra = $_REQUEST['bv_near_supra1'] . " / " . $_REQUEST['bv_near_supra2'];
   // $bv_near_infra = $_REQUEST['bv_near_infra1'] . " / " . $_REQUEST['bv_near_infra2'];
@@ -261,99 +295,99 @@ if (isset($_GET['pi_id'])) {
 
 
   // // Table 15 : slit_lamp
-  // $as_lid_od = $data_sl['as_lid_od'];
-  // $as_lid_os = $data_sl['as_lid_os'];
-  // $as_conjunctiva_od = $data_sl['as_conjunctiva_od'];
-  // $as_conjunctiva_os = $data_sl['as_conjunctiva_os'];
-  // $as_sclera_od = $data_sl['as_sclera_od'];
-  // $as_sclera_os = $data_sl['as_sclera_os'];
+  $as_lid_od = $data_sl['as_lid_od'];
+  $as_lid_os = $data_sl['as_lid_os'];
+  $as_conjunctiva_od = $data_sl['as_conjunctiva_od'];
+  $as_conjunctiva_os = $data_sl['as_conjunctiva_os'];
+  $as_sclera_od = $data_sl['as_sclera_od'];
+  $as_sclera_os = $data_sl['as_sclera_os'];
 
-  // $as_cornea_od = $data_sl['as_cornea_od'];
-  // $as_cornea_os = $data_sl['as_cornea_os'];
-  // $as_tear = $data_sl['as_tear'];
-  // $as_tear_od = $data_sl['as_tear_od'];
-  // $as_tear_os = $data_sl['as_tear_os'];
-  // $as_iris_od = $data_sl['as_iris_od'];
-  // $as_iris_os = $data_sl['as_iris_os'];
-  // $as_lens_od = $data_sl['as_lens_od'];
-  // $as_lens_os = $data_sl['as_lens_os'];
-  // $as_anterior_od = $data_sl['as_anterior_od'];
-  // $as_anterior_os = $data_sl['as_anterior_os'];
-  // $as_p_size_l_od = $data_sl['as_p_size_l_od'];
-  // $as_p_size_l_os = $data_sl['as_p_size_l_os'];
-  // $as_p_size_d_od = $data_sl['as_p_size_d_od'];
-  // $as_p_size_d_os = $data_sl['as_p_size_d_os'];
-  // $as_p_direct_od = $data_sl['as_p_direct_od'];
-  // $as_p_direct_os = $data_sl['as_p_direct_os'];
-  // $as_p_consensual_od = $data_sl['as_p_consensual_od'];
-  // $as_p_consensual_os = $data_sl['as_p_consensual_os'];
-  // $as_p_accommodate_od = $data_sl['as_p_accommodate_od'];
-  // $as_p_accommodate_os = $data_sl['as_p_accommodate_os'];
-  // $as_p_marcus_od = $data_sl['as_p_marcus_od'];
-  // $as_p_marcus_os = $data_sl['as_p_marcus_os'];
-  // $as_img = $data_sl['as_img'];
-  // $as_assessment = $data_sl['as_assessment'];
+  $as_cornea_od = $data_sl['as_cornea_od'];
+  $as_cornea_os = $data_sl['as_cornea_os'];
+  $as_tear = $data_sl['as_tear'];
+  $as_tear_od = $data_sl['as_tear_od'];
+  $as_tear_os = $data_sl['as_tear_os'];
+  $as_iris_od = $data_sl['as_iris_od'];
+  $as_iris_os = $data_sl['as_iris_os'];
+  $as_lens_od = $data_sl['as_lens_od'];
+  $as_lens_os = $data_sl['as_lens_os'];
+  $as_anterior_od = $data_sl['as_anterior_od'];
+  $as_anterior_os = $data_sl['as_anterior_os'];
+  $as_p_size_l_od = $data_sl['as_p_size_l_od'];
+  $as_p_size_l_os = $data_sl['as_p_size_l_os'];
+  $as_p_size_d_od = $data_sl['as_p_size_d_od'];
+  $as_p_size_d_os = $data_sl['as_p_size_d_os'];
+  $as_p_direct_od = $data_sl['as_p_direct_od'];
+  $as_p_direct_os = $data_sl['as_p_direct_os'];
+  $as_p_consensual_od = $data_sl['as_p_consensual_od'];
+  $as_p_consensual_os = $data_sl['as_p_consensual_os'];
+  $as_p_accommodate_od = $data_sl['as_p_accommodate_od'];
+  $as_p_accommodate_os = $data_sl['as_p_accommodate_os'];
+  $as_p_marcus_od = $data_sl['as_p_marcus_od'];
+  $as_p_marcus_os = $data_sl['as_p_marcus_os'];
+  $as_img = $data_sl['as_img'];
+  $as_assessment = $data_sl['as_assessment'];
 
-  // $ps_radio = $data_sl['ps_radio'];
-  // $ps_media_od = $data_sl['ps_media_od'];
-  // $ps_media_os = $data_sl['ps_media_os'];
-  // $ps_vitreous_od = $data_sl['ps_vitreous_od'];
-  // $ps_vitreous_os = $data_sl['ps_vitreous_os'];
-  // $ps_cd_od = $data_sl['ps_cd_od'];
-  // $ps_cd_os = $data_sl['ps_cd_os'];
-  // $ps_disc_od = $data_sl['ps_disc_od'];
-  // $ps_disc_os = $data_sl['ps_disc_os'];
-  // $ps_avratio_od = $data_sl['ps_avratio_od'];
-  // $ps_avratio_os = $data_sl['ps_avratio_os'];
-  // $ps_avcrossing_od = $data_sl['ps_avcrossing_od'];
-  // $ps_avcrossing_os = $data_sl['ps_avcrossing_os'];
-  // $ps_macular_od = $data_sl['ps_macular_od'];
-  // $ps_macular_os = $data_sl['ps_macular_os'];
-  // $ps_fovea_od = $data_sl['ps_fovea_od'];
-  // $ps_fovea_os = $data_sl['ps_fovea_os'];
-  // $ps_bg_od = $data_sl['ps_bg_od'];
-  // $ps_bg_os = $data_sl['ps_bg_os'];
-  // $ps_periphery_od = $data_sl['ps_periphery_od'];
-  // $ps_periphery_os = $data_sl['ps_periphery_os'];
-  // $ps_img = $data_sl['ps_img'];
-  // $ps_treatment = $data_sl['ps_treatment'];
-  // $ps_next = $data_sl['ps_next'];
-  // $ps_examinedby = $data_sl['ps_examinedby'];
+  $ps_radio = $data_sl['ps_radio'];
+  $ps_media_od = $data_sl['ps_media_od'];
+  $ps_media_os = $data_sl['ps_media_os'];
+  $ps_vitreous_od = $data_sl['ps_vitreous_od'];
+  $ps_vitreous_os = $data_sl['ps_vitreous_os'];
+  $ps_cd_od = $data_sl['ps_cd_od'];
+  $ps_cd_os = $data_sl['ps_cd_os'];
+  $ps_disc_od = $data_sl['ps_disc_od'];
+  $ps_disc_os = $data_sl['ps_disc_os'];
+  $ps_avratio_od = $data_sl['ps_avratio_od'];
+  $ps_avratio_os = $data_sl['ps_avratio_os'];
+  $ps_avcrossing_od = $data_sl['ps_avcrossing_od'];
+  $ps_avcrossing_os = $data_sl['ps_avcrossing_os'];
+  $ps_macular_od = $data_sl['ps_macular_od'];
+  $ps_macular_os = $data_sl['ps_macular_os'];
+  $ps_fovea_od = $data_sl['ps_fovea_od'];
+  $ps_fovea_os = $data_sl['ps_fovea_os'];
+  $ps_bg_od = $data_sl['ps_bg_od'];
+  $ps_bg_os = $data_sl['ps_bg_os'];
+  $ps_periphery_od = $data_sl['ps_periphery_od'];
+  $ps_periphery_os = $data_sl['ps_periphery_os'];
+  $ps_img = $data_sl['ps_img'];
+  $ps_treatment = $data_sl['ps_treatment'];
+  $ps_next = $data_sl['ps_next'];
+  $ps_examinedby = $data_sl['ps_examinedby'];
 
   // // Table 16 : prescription
-  // $pc_name = $data_prescription['pc_name'];
-  // $pc_age = $data_prescription['pc_age'];
-  // $pc_date = $data_prescription['pc_date'];
-  // $pc_sphere_od = $data_prescription['pc_sphere_od'];
-  // $pc_sphere_os = $data_prescription['pc_sphere_os'];
-  // $pc_cylinder_od = $data_prescription['pc_cylinder_od'];
-  // $pc_cylinder_os = $data_prescription['pc_cylinder_os'];
-  // $pc_axis_od = $data_prescription['pc_axis_od'];
-  // $pc_axis_os = $data_prescription['pc_axis_os'];
-  // $pc_add_od = $data_prescription['pc_add_od'];
-  // $pc_add_os = $data_prescription['pc_add_os'];
-  // $pc_prism_od = $data_prescription['pc_prism_od'];
-  // $pc_prism_os = $data_prescription['pc_prism_os'];
-  // $pc_va_od = $data_prescription['pc_va_od'];
-  // $pc_va_os = $data_prescription['pc_va_os'];
-  // $pc_pd_od = $data_prescription['pc_pd_od'];
-  // $pc_pd_os = $data_prescription['pc_pd_os'];
-  // $pc_fitting_od = $data_prescription['pc_fitting_od'];
-  // $pc_fitting_os = $data_prescription['pc_fitting_os'];
-  // $pc_checkbox1 = $data_prescription['pc_checkbox1'];
-  // $pc_checkbox2 = $data_prescription['pc_checkbox2'];
-  // $pc_checkbox3 = $data_prescription['pc_checkbox3'];
-  // $pc_checkbox4 = $data_prescription['pc_checkbox4'];
-  // $pc_checkbox5 = $data_prescription['pc_checkbox5'];
-  // $pc_checkbox6 = $data_prescription['pc_checkbox6'];
-  // $pc_checkbox7 = $data_prescription['pc_checkbox7'];
-  // $pc_checkbox_detail1 = $data_prescription['pc_checkbox_detail1'];
-  // $pc_checkbox_detail2 = $data_prescription['pc_checkbox_detail2'];
-  // $pc_checkbox_detail3 = $data_prescription['pc_checkbox_detail3'];
-  // $pc_checkbox_detail4 = $data_prescription['pc_checkbox_detail4'];
-  // $pc_checkbox_detail5 = $data_prescription['pc_checkbox_detail5'];
-  // $pc_checkbox_detail6 = $data_prescription['pc_checkbox_detail6'];
-  // $pc_checkbox_detail7 = $data_prescription['pc_checkbox_detail7'];
-  // $pc_note = $data_prescription['pc_note'];
+  $pc_name = $data_prescription['pc_name'];
+  $pc_age = $data_prescription['pc_age'];
+  $pc_date = $data_prescription['pc_date'];
+  $pc_sphere_od = $data_prescription['pc_sphere_od'];
+  $pc_sphere_os = $data_prescription['pc_sphere_os'];
+  $pc_cylinder_od = $data_prescription['pc_cylinder_od'];
+  $pc_cylinder_os = $data_prescription['pc_cylinder_os'];
+  $pc_axis_od = $data_prescription['pc_axis_od'];
+  $pc_axis_os = $data_prescription['pc_axis_os'];
+  $pc_add_od = $data_prescription['pc_add_od'];
+  $pc_add_os = $data_prescription['pc_add_os'];
+  $pc_prism_od = $data_prescription['pc_prism_od'];
+  $pc_prism_os = $data_prescription['pc_prism_os'];
+  $pc_va_od = $data_prescription['pc_va_od'];
+  $pc_va_os = $data_prescription['pc_va_os'];
+  $pc_pd_od = $data_prescription['pc_pd_od'];
+  $pc_pd_os = $data_prescription['pc_pd_os'];
+  $pc_fitting_od = $data_prescription['pc_fitting_od'];
+  $pc_fitting_os = $data_prescription['pc_fitting_os'];
+  $pc_checkbox1 = $data_prescription['pc_checkbox1'];
+  $pc_checkbox2 = $data_prescription['pc_checkbox2'];
+  $pc_checkbox3 = $data_prescription['pc_checkbox3'];
+  $pc_checkbox4 = $data_prescription['pc_checkbox4'];
+  $pc_checkbox5 = $data_prescription['pc_checkbox5'];
+  $pc_checkbox6 = $data_prescription['pc_checkbox6'];
+  $pc_checkbox7 = $data_prescription['pc_checkbox7'];
+  $pc_checkbox_detail1 = $data_prescription['pc_checkbox_detail1'];
+  $pc_checkbox_detail2 = $data_prescription['pc_checkbox_detail2'];
+  $pc_checkbox_detail3 = $data_prescription['pc_checkbox_detail3'];
+  $pc_checkbox_detail4 = $data_prescription['pc_checkbox_detail4'];
+  $pc_checkbox_detail5 = $data_prescription['pc_checkbox_detail5'];
+  $pc_checkbox_detail6 = $data_prescription['pc_checkbox_detail6'];
+  $pc_checkbox_detail7 = $data_prescription['pc_checkbox_detail7'];
+  $pc_note = $data_prescription['pc_note'];
 
 }
