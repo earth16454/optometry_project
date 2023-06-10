@@ -30,6 +30,14 @@ CREATE TABLE `pohx` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
+CREATE TABLE admin(
+	admin_id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    admin_email varchar(255) NOT NULL,
+    admin_password varchar(255) NOT NULL,
+    admin_name varchar(255) NOT NULL,
+    admin_tel varchar(255) NOT NULL,
+    admin_created_at timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 
