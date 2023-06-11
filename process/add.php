@@ -327,7 +327,6 @@ if (isset($_REQUEST['submit'])) {
   }
   if (isset($_REQUEST['pc_checkbox7'])) {
     $pc_checkbox1 = $_REQUEST['pc_checkbox7'];
-    $pc_checkbox_detail1 = $_REQUEST['pc_checkbox_detail7'];
   }
   $pc_note = $_REQUEST['pc_note'];
 

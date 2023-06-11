@@ -72,12 +72,12 @@ if (!isset($_SESSION['admin_login'])) {
 
     if (isset($_SESSION['admin_login'])) {
       $admin_id = $_SESSION['admin_login'];
-      $stmt = $db->query("SELECT * FROM admins WHERE admin_id = $admin_id");
-      $stmt->execute();
-      $row1 = $stmt->fetch(PDO::FETCH_ASSOC);
+      $admin_stmt = $db->query("SELECT * FROM admins WHERE admin_id = $admin_id");
+      $admin_stmt->execute();
+      $row_admin = $admin_stmt->fetch(PDO::FETCH_ASSOC);
     }
     ?>
-    <h2 class="">Hi, Admin Thanaphong Songsisai</h2>
+    <h2 class="">Hi, Admin <?php echo $row_admin['admin_name']; ?></h2>
     <hr>
 
     <div class="table-responsive">
