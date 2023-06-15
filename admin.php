@@ -8,6 +8,19 @@ if (!isset($_SESSION['admin_login'])) {
   header('location: signin.php');
 }
 
+if (isset($_GET['search']) && $_GET['search'] != '') {
+  $search = "%{$_GET['search']}%";
+
+  $select_stmt = $db->prepare("SELECT * FROM personal_information WHERE pi_firstname LIKE ?");
+  $select_stmt->execute([$search]);
+  $select_stmt->execute();
+  $result = $select_stmt->fetchAll();
+} else {
+  $select_stmt = $db->prepare("SELECT * FROM personal_information");
+  $select_stmt->execute();
+  $result = $select_stmt->fetchAll();
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,19 +51,28 @@ if (!isset($_SESSION['admin_login'])) {
   <header class="p-3 mb-3 bg-white shadow-sm">
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <a href="index.php" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
+        <a href="admin.php" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
           <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
             <use xlink:href="#bootstrap"></use>
           </svg>
-          <img src="assets/img/logo.png" width="50" alt="">
+          <img src="assets/img/logo.png" width="50" alt="" />
         </a>
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="#" class="nav-link px-2 link-secondary">Overview</a></li>
+          <li><a href="admin.php" class="nav-link px-2 link-secondary">Overview</a></li>
         </ul>
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+
+        <form action="admin.php" method="get" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
           <div class="input-group">
-            <input type="search" class="form-control" placeholder="Search..." aria-label="Search" />
+            <input 
+              type="search" 
+              class="form-control" 
+              name="search" 
+              placeholder="Search..." 
+              aria-label="Search" 
+              value="<?php if (isset($_GET['search'])) {
+                echo $_GET['search'];} ?>"
+              />
             <button type="submit" class="input-group-text btn btn-success"><i class="bi bi-search"></i></button>
           </div>
         </form>
@@ -67,6 +89,7 @@ if (!isset($_SESSION['admin_login'])) {
     </div>
   </header>
 
+
   <section class="container pt-md-5">
     <?php
 
@@ -80,7 +103,15 @@ if (!isset($_SESSION['admin_login'])) {
     <h2 class="">Hi, Admin <?php echo $row_admin['admin_name']; ?></h2>
     <hr>
 
-    <div class="table-responsive">
+    <?php
+    if (isset($_GET['search']) && $_GET['search'] != '') {
+      echo '<font color="red"> ข้อมูลการค้นหา : ' . $_GET['search'];
+      echo ' *พบ ' . $select_stmt->rowCount() . ' รายการ</font><br><br>';
+    }
+
+    ?>
+
+    <div class="table-responsive small">
       <table class="table table-striped">
         <thead>
           <tr>
@@ -98,9 +129,7 @@ if (!isset($_SESSION['admin_login'])) {
         </thead>
         <tbody>
           <?php
-          $select_stmt = $db->prepare("SELECT * FROM personal_information");
-          $select_stmt->execute();
-          while ($row = $select_stmt->fetch(PDO::FETCH_ASSOC)) {
+          foreach ($result as $row) {
           ?>
             <tr>
               <td><?php echo $row["pi_id"]; ?></td>

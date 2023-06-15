@@ -68,8 +68,6 @@
                 <!-- Page 3 -->
                 <?php include_once('component/edit_page3.php'); ?>
 
-                <!-- <button type="submit" name="submit" class="btn btn-success w-100">Submit</button> -->
-
               </div>
             </form>
           </div>
